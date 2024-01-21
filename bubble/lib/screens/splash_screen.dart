@@ -13,12 +13,12 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   void splashFunc() {
     Future.delayed(
-      Duration(seconds: 5),
+      const Duration(seconds: 5),
       () {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => Home(),
+            builder: (context) => const Home(),
           ),
         );
       },
@@ -27,7 +27,6 @@ class _SplashState extends State<Splash> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(() {
       splashFunc();
@@ -48,7 +47,7 @@ class _SplashState extends State<Splash> {
               Container(
                 width: size.width,
                 height: size.height / 1.5,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/images/Bubble.png"),
                   ),

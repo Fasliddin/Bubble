@@ -2,8 +2,10 @@ import 'package:bubble/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MaterialApp(
-    home: Splash(),
-    debugShowCheckedModeBanner: false,
-  ));
+  runApp(
+    const MaterialApp(
+      home: Splash(),
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }
