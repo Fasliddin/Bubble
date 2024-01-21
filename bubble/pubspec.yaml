@@ -37,6 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   loading_animation_widget: ^1.2.0+4
   flutter_launcher_icons: ^0.13.1
+  flutter_svg: ^2.0.9
+  bottom_navbar_with_indicator: ^0.0.8
+  rive: ^0.12.4
 
 dev_dependencies:
   flutter_test:
@@ -63,6 +66,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
