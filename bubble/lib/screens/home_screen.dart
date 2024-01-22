@@ -1,8 +1,11 @@
 import 'package:bubble/components/bottom_navigation.dart';
 import 'package:bubble/components/icons.dart';
+import 'package:bubble/components/number_picker.dart';
 import 'package:bubble/data/colors.dart';
+// import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:flutter/material.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,7 +22,14 @@ class _HomeState extends State<Home> {
       backgroundColor: background,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print(selectedIndex);
+          setState(() {
+            showModalBottomSheet(
+              context: context,
+              showDragHandle: false,
+              backgroundColor: background,
+              builder: (context) => Number_Picker()
+            );
+          });
         },
         backgroundColor: bubbleColor,
         shape: RoundedRectangleBorder(
@@ -37,7 +47,11 @@ class _HomeState extends State<Home> {
         titleSpacing: 10,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              setState(() {
+                datas.sort();
+              });
+            },
             icon: Icon(
               Icons.add_rounded,
               color: Colors.white.withOpacity(0.80),
@@ -55,6 +69,7 @@ class _HomeState extends State<Home> {
             onSubmitted: (value) {
               setState(() {
                 print(value);
+                // datasadd();
               });
             },
             textStyle: const MaterialStatePropertyAll(
@@ -85,10 +100,54 @@ class _HomeState extends State<Home> {
         ),
       ),
       bottomNavigationBar: const BottomNavigation(),
-      // body: ListView.builder(
-      //     itemBuilder: (context, index) => Column(
-      //           children: text.map((e) => Text(e)).toList(),
-      //         )),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: datas.length,
+          itemBuilder: (context, index) => GestureDetector(
+            onLongPress: () {
+              setState(() {
+                datas.removeAt(index);
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                // height: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: bubbleColor,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        datas[index],
+                        textAlign:
+                            index % 2 == 0 ? TextAlign.left : TextAlign.right,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "${DateTime.now().month.toString() + "/" + DateTime.now().day.toString() + "/" + DateTime.now().year.toString()}" +
+                            "/" +
+                            DateTime.now().second.toString(),
+                        textAlign:
+                            index % 2 != 0 ? TextAlign.left : TextAlign.right,
+                        style: const TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
