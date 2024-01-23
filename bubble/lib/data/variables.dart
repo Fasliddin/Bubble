@@ -1,3 +1,5 @@
+import 'package:bubble/screens/account_screen.dart';
+import 'package:bubble/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 int selectedIndex = 0;
@@ -22,3 +24,10 @@ List<String> listOfText = [
   "Messages",
   "Settings",
 ];
+List listOfScreens = [
+  Home_page(),
+  account_page(),
+ Home_page(),
+  account_page(),
+];
+

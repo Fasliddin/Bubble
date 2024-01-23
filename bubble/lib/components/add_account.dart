@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class Number_Picker extends StatefulWidget {
-  const Number_Picker({super.key});
+class addAccount extends StatefulWidget {
+  const addAccount({super.key});
 
   @override
-  State<Number_Picker> createState() => _Number_PickerState();
+  State<addAccount> createState() => _addAccountState();
 }
 
-class _Number_PickerState extends State<Number_Picker> {
+class _addAccountState extends State<addAccount> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -40,13 +40,13 @@ class _Number_PickerState extends State<Number_Picker> {
             ),
             TextField(
               controller: firstNameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
             TextField(
               controller: lastNameController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 border: OutlineInputBorder(),
               ),
             ),
@@ -61,7 +61,7 @@ class _Number_PickerState extends State<Number_Picker> {
               controller: numberController,
               pickerDialogStyle: PickerDialogStyle(
                 width: size.width,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 backgroundColor: background,
                 countryCodeStyle: const TextStyle(
                   color: bubbleColor,

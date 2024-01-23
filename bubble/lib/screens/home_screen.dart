@@ -1,11 +1,10 @@
-import 'package:bubble/components/bottom_navigation.dart';
 import 'package:bubble/components/icons.dart';
-import 'package:bubble/components/number_picker.dart';
+import 'package:bubble/components/add_account.dart';
 import 'package:bubble/data/colors.dart';
+import 'package:bubble/data/functions.dart';
 // import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:flutter/material.dart';
-
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -24,11 +23,12 @@ class _HomeState extends State<Home> {
         onPressed: () {
           setState(() {
             showModalBottomSheet(
-              context: context,
-              showDragHandle: false,
-              backgroundColor: background,
-              builder: (context) => Number_Picker()
-            );
+                context: context,
+                useRootNavigator: true,
+                constraints: BoxConstraints.expand(),
+                showDragHandle: false,
+                backgroundColor: background,
+                builder: (context) => const addAccount());
           });
         },
         backgroundColor: bubbleColor,
@@ -69,7 +69,7 @@ class _HomeState extends State<Home> {
             onSubmitted: (value) {
               setState(() {
                 print(value);
-                // datasadd();
+                datasadd();
               });
             },
             textStyle: const MaterialStatePropertyAll(
@@ -99,55 +99,62 @@ class _HomeState extends State<Home> {
           ),
         ),
       ),
-      bottomNavigationBar: const BottomNavigation(),
-      body: Padding(
+      bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: datas.length,
-          itemBuilder: (context, index) => GestureDetector(
-            onLongPress: () {
-              setState(() {
-                datas.removeAt(index);
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                // height: 30,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: bubbleColor,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Text(
-                        datas[index],
-                        textAlign:
-                            index % 2 == 0 ? TextAlign.left : TextAlign.right,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        "${DateTime.now().month.toString() + "/" + DateTime.now().day.toString() + "/" + DateTime.now().year.toString()}" +
-                            "/" +
-                            DateTime.now().second.toString(),
-                        textAlign:
-                            index % 2 != 0 ? TextAlign.left : TextAlign.right,
-                        style: const TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: BottomNavigationBar(
+            backgroundColor: bottomNavigationColor,
+            type: BottomNavigationBarType.shifting,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
+            selectedIconTheme: IconThemeData(
+              color: bubbleColor,
             ),
+            selectedLabelStyle: TextStyle(
+              color: Color.fromRGBO(82, 186, 140, 1),
+              fontWeight: FontWeight.w500,
+            ),
+            unselectedLabelStyle:
+                TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+            unselectedIconTheme: IconThemeData(
+              color: Colors.white,
+            ),
+            currentIndex: selectedIndex,
+            onTap: (value) {
+              setState(
+                () {
+                  selectedIndex = value;
+                  print(selectedIndex);
+                },
+              );
+            },
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_rounded),
+                label: "Home",
+                backgroundColor: bottomNavigationColor,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.group_rounded),
+                label: "Friends",
+                backgroundColor: bottomNavigationColor,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.message_rounded),
+                label: "Messages",
+                backgroundColor: bottomNavigationColor,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings_rounded),
+                label: "Settings",
+                backgroundColor: bottomNavigationColor,
+              ),
+            ],
           ),
         ),
       ),
+      body: listOfScreens.elementAt(selectedIndex),
     );
   }
 }

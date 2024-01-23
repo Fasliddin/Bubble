@@ -5,8 +5,8 @@ void selectBottom(value) {
 }
 
 void datasadd() {
-  if (firstNameController.text.isNotEmpty) {
-    datas.add(firstNameController.text);
+  if (searchController.text.isNotEmpty) {
+    datas.add(searchController.text);
   }else{
     print("xato");
   }
