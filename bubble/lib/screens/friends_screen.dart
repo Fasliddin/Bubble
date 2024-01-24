@@ -2,14 +2,14 @@ import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:flutter/material.dart';
 
-class AccountPage extends StatefulWidget {
-  const AccountPage({super.key});
+class FriendsPage extends StatefulWidget {
+  const FriendsPage({super.key});
 
   @override
-  State<AccountPage> createState() => AccountScreepage();
+  State<FriendsPage> createState() => _FriendsPageState();
 }
 
-class AccountScreepage extends State<AccountPage> {
+class _FriendsPageState extends State<FriendsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +38,7 @@ class AccountScreepage extends State<AccountPage> {
           itemBuilder: (context, index) => GestureDetector(
             onLongPress: () {
               setState(() {
-                datas.removeAt(index);
+                HomeAccountTempleteList.removeAt(index);
               });
             },
             child: ListTile(

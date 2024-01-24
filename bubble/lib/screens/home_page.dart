@@ -1,17 +1,17 @@
 import 'package:bubble/data/colors.dart';
 import 'package:flutter/material.dart';
 
-class Home_page extends StatefulWidget {
-  const Home_page({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Home_page> createState() => _Home_pageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _Home_pageState extends State<Home_page> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: background,
     );
   }

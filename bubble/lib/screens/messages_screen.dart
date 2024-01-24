@@ -2,14 +2,14 @@ import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:flutter/material.dart';
 
-class AccountPage extends StatefulWidget {
-  const AccountPage({super.key});
+class MessagesPage extends StatefulWidget {
+  const MessagesPage({super.key});
 
   @override
-  State<AccountPage> createState() => AccountScreepage();
+  State<MessagesPage> createState() => _MessagesPageState();
 }
 
-class AccountScreepage extends State<AccountPage> {
+class _MessagesPageState extends State<MessagesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class AccountScreepage extends State<AccountPage> {
         title: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "Friends",
+            "Messages",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
@@ -38,7 +38,7 @@ class AccountScreepage extends State<AccountPage> {
           itemBuilder: (context, index) => GestureDetector(
             onLongPress: () {
               setState(() {
-                datas.removeAt(index);
+                HomeAccountTempleteList.removeAt(index);
               });
             },
             child: ListTile(

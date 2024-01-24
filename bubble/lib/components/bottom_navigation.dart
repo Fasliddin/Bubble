@@ -21,16 +21,16 @@ class _BottomNavigationState extends State<BottomNavigation> {
           type: BottomNavigationBarType.shifting,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          selectedIconTheme: IconThemeData(
+          selectedIconTheme:const IconThemeData(
             color: bubbleColor,
           ),
-          selectedLabelStyle: TextStyle(
+          selectedLabelStyle:const TextStyle(
             color:  Color.fromRGBO(82, 186, 140, 1),
             fontWeight: FontWeight.w500,
           ),
           unselectedLabelStyle:
-              TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
-          unselectedIconTheme: IconThemeData(
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+          unselectedIconTheme: const IconThemeData(
             color: Colors.white,
           ),
           currentIndex: selectedIndex,

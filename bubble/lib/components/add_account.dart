@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
-class addAccount extends StatefulWidget {
-  const addAccount({super.key});
+class AddAccount extends StatefulWidget {
+  const AddAccount({super.key});
 
   @override
-  State<addAccount> createState() => _addAccountState();
+  State<AddAccount> createState() => _AddAccountState();
 }
 
-class _addAccountState extends State<addAccount> {
+class _AddAccountState extends State<AddAccount> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -68,7 +68,7 @@ class _addAccountState extends State<addAccount> {
                 ),
                 countryNameStyle: const TextStyle(color: Colors.white),
                 searchFieldCursorColor: bubbleColor,
-                searchFieldPadding: EdgeInsets.all(15),
+                searchFieldPadding: const EdgeInsets.all(15),
                 listTilePadding: const EdgeInsets.all(1),
                 listTileDivider: Container(),
                 searchFieldInputDecoration: InputDecoration(
@@ -114,7 +114,7 @@ class _addAccountState extends State<addAccount> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                backgroundColor: MaterialStatePropertyAll(
+                backgroundColor: const MaterialStatePropertyAll(
                   bubbleColor,
                 ),
               ),
@@ -126,10 +126,10 @@ class _addAccountState extends State<addAccount> {
               child: SizedBox(
                 width: size.width,
                 height: 50,
-                child: Center(
+                child:const Center(
                   child: Text(
                     "Create contact",
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                       fontWeight: FontWeight.w500,

@@ -1,8 +1,7 @@
-import 'package:bubble/components/icons.dart';
 import 'package:bubble/components/add_account.dart';
+import 'package:bubble/components/icons.dart';
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/functions.dart';
-// import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:flutter/material.dart';
 
@@ -25,10 +24,10 @@ class _HomeState extends State<Home> {
             showModalBottomSheet(
                 context: context,
                 useRootNavigator: true,
-                constraints: BoxConstraints.expand(),
+                constraints: const BoxConstraints.expand(),
                 showDragHandle: false,
                 backgroundColor: background,
-                builder: (context) => const addAccount());
+                builder: (context) => const AddAccount());
           });
         },
         backgroundColor: bubbleColor,
@@ -49,7 +48,7 @@ class _HomeState extends State<Home> {
           IconButton(
             onPressed: () {
               setState(() {
-                datas.sort();
+               HomeAccountTempleteList.reversed;
               });
             },
             icon: Icon(
@@ -108,16 +107,16 @@ class _HomeState extends State<Home> {
             type: BottomNavigationBarType.shifting,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            selectedIconTheme: IconThemeData(
+            selectedIconTheme:const IconThemeData(
               color: bubbleColor,
             ),
-            selectedLabelStyle: TextStyle(
+            selectedLabelStyle:const TextStyle(
               color: Color.fromRGBO(82, 186, 140, 1),
               fontWeight: FontWeight.w500,
             ),
             unselectedLabelStyle:
-                TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
-            unselectedIconTheme: IconThemeData(
+                const TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+            unselectedIconTheme:const IconThemeData(
               color: Colors.white,
             ),
             currentIndex: selectedIndex,
