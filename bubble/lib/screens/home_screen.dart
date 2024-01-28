@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
           width: size.width - 60,
           height: 38,
           child: SearchBar(
-            controller: searchController,
+            // controller: searchController,
             onSubmitted: (value) {
               setState(() {
                 print(value);

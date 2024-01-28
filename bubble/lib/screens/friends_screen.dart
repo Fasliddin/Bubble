@@ -18,8 +18,8 @@ class _FriendsPageState extends State<FriendsPage> {
       appBar: AppBar(
         toolbarHeight: 40,
         backgroundColor: Colors.transparent,
-        title: Padding(
-          padding: const EdgeInsets.all(8.0),
+        title:const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Text(
             "Friends",
             style: TextStyle(
@@ -73,19 +73,22 @@ class _FriendsPageState extends State<FriendsPage> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  CircleAvatar(
-                    radius: 9,
-                    backgroundColor: Colors.white,
+                  Visibility(
+                     visible: HomeAccountTempleteList[index].messageNumber>0?true:false,
                     child: CircleAvatar(
-                      radius: 8,
-                      backgroundColor: bubbleColor,
-                      child: Center(
-                        child: Text(
-                          HomeAccountTempleteList[index]
-                              .messageNumber
-                              .toString(),
-                          style: messageNumberStyle,
-                          textAlign: TextAlign.center,
+                      radius: 9,
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: 8,
+                        backgroundColor: bubbleColor,
+                        child: Center(
+                          child: Text(
+                            HomeAccountTempleteList[index]
+                                .messageNumber
+                                .toString(),
+                            style: messageNumberStyle,
+                            textAlign: TextAlign.center,
+                          ),
                         ),
                       ),
                     ),

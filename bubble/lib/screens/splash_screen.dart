@@ -1,5 +1,6 @@
 import 'package:bubble/data/colors.dart';
-import 'package:bubble/screens/home_screen.dart';
+// import 'package:bubble/screens/sign_in_screen.dart';
+import 'package:bubble/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -13,12 +14,12 @@ class Splash extends StatefulWidget {
 class _SplashState extends State<Splash> {
   void splashFunc() {
     Future.delayed(
-      const Duration(seconds: 5),
+      const Duration(seconds: 3),
       () {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const Home(),
+            builder: (context) => const SignUp(),
           ),
         );
       },

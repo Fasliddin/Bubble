@@ -7,8 +7,17 @@ void selectBottom(value) {
 void datasadd() {
   if (searchController.text.isNotEmpty) {
     datas.add(searchController.text);
-  }else{
+  } else {
     print("xato");
   }
   searchController.clear();
+}
+
+void adding() {
+  if (searchController.text.isNotEmpty) {
+    datas.add(searchController.text);
+  } else {
+    print("xato");
+  }
+  // searchController.clear();
 }

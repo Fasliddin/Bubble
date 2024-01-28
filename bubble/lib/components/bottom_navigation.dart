@@ -38,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
             setState(
               () {
                 selectedIndex = value;
-                print(selectedIndex);
+                // print(selectedIndex);
               },
             );
           },
