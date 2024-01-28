@@ -118,7 +118,7 @@ class _SignInState extends State<SignIn> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
-                  style: TextStyle(all(8.0),
+                  style: TextStyle(
                     color:
                         checkValueIn ? Colors.white : Colors.blueGrey.shade200,
                   ),
