@@ -40,23 +40,7 @@ class _MessagesPageState extends State<MessagesPage> {
           itemBuilder: (context, index) => Builder(builder: (context) {
             return GestureDetector(
               onLongPress: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => SimpleDialog(
-                    title: const Text("Clear accounts"),
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            HomeAccountTempleteList.removeAt(index);
-                            Navigator.pop(context);
-                          });
-                        },
-                        child: const Text("Clear"),
-                      ),
-                    ],
-                  ),
-                );
+                setState(() {});
               },
               child: ListTile(
                 selected: true,
@@ -77,7 +61,7 @@ class _MessagesPageState extends State<MessagesPage> {
                   style: usernameStyle,
                 ),
                 subtitle: Text(
-                 HomeAccountTempleteList[index].message,
+                  HomeAccountTempleteList[index].message,
                   style: messageStyle,
                   softWrap: false,
                 ),

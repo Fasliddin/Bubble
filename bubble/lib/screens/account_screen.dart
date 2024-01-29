@@ -80,27 +80,58 @@ class _AccountPageState extends State<AccountPage> {
             itemCount: datas.length,
             itemBuilder: (context, index) => Padding(
               padding: const EdgeInsets.all(4.0),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: index % 2 == 0?Radius.circular(25):Radius.circular(5),
-                    bottomLeft: index % 2 == 0?Radius.circular(5):Radius.circular(25),
-                    topLeft:index % 2 == 0?Radius.circular(0):Radius.circular(5),
-                    topRight: index % 2 == 0?Radius.circular(5):Radius.circular(0),
+              child: GestureDetector(
+                onLongPress: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => SimpleDialog(
+                    backgroundColor: background,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    children: [
+                      ListTile(
+                        title: Text("Tahrirlash"),
+                        leading: Icon(Icons.edit_rounded),
+                      ),
+                      ListTile(
+                        title: Text("Tahrirlash"),
+                        leading: Icon(Icons.edit_rounded),
+                      ),
+                      ListTile(
+                        title: Text("Tahrirlash"),
+                        leading: Icon(Icons.edit_rounded),
+                      ),
+                      ListTile(
+                        title: Text("Tahrirlash"),
+                        leading: Icon(Icons.edit_rounded),
+                      ),
+                    ],
                   ),
-                ),
-                elevation: 0,
-                color: index % 2 == 0
-                    ? bubbleColor
-                    : bottomNavigationColor,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    child: Text(
-                      datas[index],
-                      textAlign:
-                          index % 2 == 0 ? TextAlign.left : TextAlign.right,
-                      style: usernameStyle,
+                );
+              },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      bottomRight: index % 2 == 0?Radius.circular(25):Radius.circular(5),
+                      bottomLeft: index % 2 == 0?Radius.circular(5):Radius.circular(25),
+                      topLeft:index % 2 == 0?Radius.circular(0):Radius.circular(5),
+                      topRight: index % 2 == 0?Radius.circular(5):Radius.circular(0),
+                    ),
+                  ),
+                  elevation: 0,
+                  color: index % 2 == 0
+                      ? bubbleColor
+                      : bottomNavigationColor,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      child: Text(
+                        datas[index],
+                        textAlign:
+                            index % 2 == 0 ? TextAlign.left : TextAlign.right,
+                        style: usernameStyle,
+                      ),
                     ),
                   ),
                 ),

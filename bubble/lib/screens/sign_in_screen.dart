@@ -1,6 +1,7 @@
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:bubble/screens/home_screen.dart';
+import 'package:bubble/screens/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -57,6 +58,36 @@ class _SignInState extends State<SignIn> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: background,
+      appBar: AppBar(
+        backgroundColor: background,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.chevron_left_rounded,
+            color: Colors.white,
+            size: 35,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SignUp(),
+                ),
+              );
+            },
+            child: Text(
+              "Sign Up",
+              style: usernameStyle,
+            ),
+          ),
+        ],
+      ),
       body: Container(
         decoration: const BoxDecoration(
           color: background,
@@ -92,7 +123,7 @@ class _SignInState extends State<SignIn> {
                   style: const TextStyle(
                     color: Colors.white,
                   ),
-         enableInteractiveSelection: false,
+                  enableInteractiveSelection: false,
                   decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),

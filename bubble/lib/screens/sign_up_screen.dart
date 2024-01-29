@@ -1,6 +1,7 @@
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:bubble/screens/home_screen.dart';
+import 'package:bubble/screens/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -68,221 +69,245 @@ class _SignUpState extends State<SignUp> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: background,
+      appBar: AppBar(
+        backgroundColor: background,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SignIn(),
+                ),
+              );
+            },
+            child: Text(
+              "Sign in",
+              style: usernameStyle,
+            ),
+          ),
+        ],
+      ),
       body: Container(
         decoration: const BoxDecoration(
           color: background,
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: size.height / 8,
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Sign Up",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 45,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: size.height / 10,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: signUpUsernameController,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                  onEditingComplete: () {
-                    setState(() {
-                      Username = signUpUsernameController.text;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: bubbleColor,
-                        )),
-                    hintText: "Username",
-                    hintStyle: const TextStyle(
-                      color: Colors.blueGrey,
-                    ),
-                    suffixIconColor: bubbleColor,
-                    suffixIcon: const Icon(
-                      Icons.person_rounded,
-                    ),
-                    fillColor: bottomNavigationColor,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 45,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: signUpEmailController,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                  onEditingComplete: () {
-                    setState(() {
-                      Email = signUpEmailController.text;
-                    });
-                  },
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: bubbleColor,
-                        )),
-                    hintText: "Email",
-                    hintStyle: const TextStyle(
-                      color: Colors.blueGrey,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: signUpUsernameController,
+                    style: const TextStyle(
+                      color: Colors.white,
                     ),
-                    suffixIconColor: bubbleColor,
-                    suffixIcon: const Icon(
-                      Icons.email_rounded,
-                    ),
-                    fillColor: bottomNavigationColor,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
-                  controller: signUpPasswordController,
-                  onSubmitted: (value) {
-                    setState(() {});
-                  },
-                  obscureText: !checkValueUp,
-                  onEditingComplete: () {
-                    setState(() {
-                      checkValueUp = false;
-                    });
-                  },
-                  onChanged: (value) {
-                    setState(() {
-                      passwordIndex = value.length;
-                    });
-                  },
-                  maxLength: 16,
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(
-                          color: bubbleColor,
-                        )),
-                    counterText: "${signUpPasswordController.text.length}:16",
-                    counterStyle: const TextStyle(
-                      color: Colors.blueGrey,
-                    ),
-                    hintText: "Password",
-                    hintStyle: const TextStyle(
-                      color: Colors.blueGrey,
-                    ),
-                    suffixIconColor: bubbleColor,
-                    suffixIcon: Icon(
-                      checkValueUp
-                          ? Icons.lock_open_rounded
-                          : Icons.lock_rounded,
-                    ),
-                    fillColor: bottomNavigationColor,
-                    filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    GestureDetector(
-                      onLongPress: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Home(),
-                            ),
-                            (route) => false);
-                      },
-                      child: Checkbox(
-                        side: const BorderSide(
-                          color: bubbleColor,
-                          width: 2,
-                        ),
-                        activeColor: bubbleColor,
-                        tristate: true,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(3)),
-                        value: checkValueUp,
-                        onChanged: (value) {
-                          setState(() {
-                            checkValueUp = !checkValueUp;
-                          });
-                        },
-                      ),
-                    ),
-                    const Text(
-                      "Show password",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 15,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 25,
-                ),
-                child: Builder(builder: (context) {
-                  return ElevatedButton(
-                    onPressed: () {
+                    onEditingComplete: () {
                       setState(() {
-                        signUpFunc();
+                        Username = signUpUsernameController.text;
                       });
                     },
-                    style: const ButtonStyle(
-                        backgroundColor: MaterialStatePropertyAll(
-                      bottomNavigationColor,
-                    )),
-                    child: SizedBox(
-                      width: size.width,
-                      height: 50,
-                      child: const Center(
-                        child: Text(
-                          "Sign Up",
-                          style: TextStyle(
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
                             color: bubbleColor,
-                            fontSize: 15,
+                          )),
+                      hintText: "Username",
+                      hintStyle: const TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                      suffixIconColor: bubbleColor,
+                      suffixIcon: const Icon(
+                        Icons.person_rounded,
+                      ),
+                      fillColor: bottomNavigationColor,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    controller: signUpEmailController,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    onEditingComplete: () {
+                      setState(() {
+                        Email = signUpEmailController.text;
+                      });
+                    },
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: bubbleColor,
+                          )),
+                      hintText: "Email",
+                      hintStyle: const TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                      suffixIconColor: bubbleColor,
+                      suffixIcon: const Icon(
+                        Icons.email_rounded,
+                      ),
+                      fillColor: bottomNavigationColor,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                    controller: signUpPasswordController,
+                    onSubmitted: (value) {
+                      setState(() {});
+                    },
+                    obscureText: !checkValueUp,
+                    onEditingComplete: () {
+                      setState(() {
+                        checkValueUp = false;
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        passwordIndex = value.length;
+                      });
+                    },
+                    maxLength: 16,
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(
+                            color: bubbleColor,
+                          )),
+                      counterText: "${signUpPasswordController.text.length}:16",
+                      counterStyle: const TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                      hintText: "Password",
+                      hintStyle: const TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                      suffixIconColor: bubbleColor,
+                      suffixIcon: Icon(
+                        checkValueUp
+                            ? Icons.lock_open_rounded
+                            : Icons.lock_rounded,
+                      ),
+                      fillColor: bottomNavigationColor,
+                      filled: true,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Row(
+                    children: [
+                      GestureDetector(
+                        onLongPress: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Home(),
+                              ),
+                              (route) => false);
+                        },
+                        child: Checkbox(
+                          side: const BorderSide(
+                            color: bubbleColor,
+                            width: 2,
+                          ),
+                          activeColor: bubbleColor,
+                          tristate: true,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(3)),
+                          value: checkValueUp,
+                          onChanged: (value) {
+                            setState(() {
+                              checkValueUp = !checkValueUp;
+                            });
+                          },
+                        ),
+                      ),
+                      const Text(
+                        "Show password",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 15,
+                  ),
+                  child: Builder(builder: (context) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        setState(() {
+                          signUpFunc();
+                        });
+                      },
+                      style: const ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                        bottomNavigationColor,
+                      )),
+                      child: SizedBox(
+                        width: size.width,
+                        height: 50,
+                        child: const Center(
+                          child: Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: bubbleColor,
+                              fontSize: 15,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                }),
-              ),
-            ],
+                    );
+                  }),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -48,7 +48,7 @@ class _HomeState extends State<Home> {
           IconButton(
             onPressed: () {
               setState(() {
-               HomeAccountTempleteList.reversed;
+                HomeAccountTempleteList.reversed;
               });
             },
             icon: Icon(
@@ -107,16 +107,16 @@ class _HomeState extends State<Home> {
             type: BottomNavigationBarType.shifting,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            selectedIconTheme:const IconThemeData(
+            selectedIconTheme: const IconThemeData(
               color: bubbleColor,
             ),
-            selectedLabelStyle:const TextStyle(
+            selectedLabelStyle: const TextStyle(
               color: Color.fromRGBO(82, 186, 140, 1),
               fontWeight: FontWeight.w500,
             ),
-            unselectedLabelStyle:
-                const TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
-            unselectedIconTheme:const IconThemeData(
+            unselectedLabelStyle: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.w400),
+            unselectedIconTheme: const IconThemeData(
               color: Colors.white,
             ),
             currentIndex: selectedIndex,
