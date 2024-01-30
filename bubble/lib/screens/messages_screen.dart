@@ -1,9 +1,55 @@
+import 'package:bubble/components/icons.dart';
 import 'package:bubble/data/colors.dart';
+import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:bubble/screens/account_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+var appBar = appbar1;
+var appbar1 = AppBar(
+  titleSpacing: 10,
+  actions: listOfAppbarIcons,
+  toolbarHeight: 60,
+  backgroundColor: background,
+  title: SizedBox(
+    width: double.infinity / 2.5,
+    height: 38,
+    child: SearchBar(
+      // controller: searchController,
+      onSubmitted: (value) {},
+      textStyle: const MaterialStatePropertyAll(
+        TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      hintText: "Search",
+      leading: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+        child: search(),
+      ),
+      shape: MaterialStatePropertyAll(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25),
+        ),
+      ),
+      side: MaterialStatePropertyAll(
+        BorderSide(
+          color: searchBarColor.withOpacity(0.80),
+        ),
+      ),
+      elevation: const MaterialStatePropertyAll(0),
+      backgroundColor: const MaterialStatePropertyAll(
+        searchBarColor,
+      ),
+    ),
+  ),
+);
+var appbar2 = AppBar(
+  titleSpacing: 10,
+  actions: listOfAppbarIcons,
+  toolbarHeight: 60,
+  backgroundColor: background,
+);
 class MessagesPage extends StatefulWidget {
   const MessagesPage({super.key});
 
@@ -39,8 +85,11 @@ class _MessagesPageState extends State<MessagesPage> {
           itemCount: HomeAccountTempleteList.length,
           itemBuilder: (context, index) => Builder(builder: (context) {
             return GestureDetector(
-              onLongPress: () {
-                setState(() {});
+              onLongPressDown: (details) {
+                setState(() {
+                  onLongPressDownFunc();
+                  print("bajarildi");
+                });
               },
               child: ListTile(
                 selected: true,
@@ -120,3 +169,4 @@ class _MessagesPageState extends State<MessagesPage> {
     );
   }
 }
+

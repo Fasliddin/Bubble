@@ -5,15 +5,17 @@ import 'package:bubble/screens/home_page.dart';
 import 'package:bubble/screens/messages_screen.dart';
 import 'package:bubble/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+
 String? errorMessage;
-String? Username="Username";
-String? Email="Examle@gmail.com";
+String? Username = "Username";
+String? Email = "Examle@gmail.com";
 int selectedIndex = 0;
 bool checkValueUp = false;
 bool checkValueIn = false;
 bool notifications = false;
 int accountIndex = 1;
-int passwordIndex= 0;
+int passwordIndex = 0;
+
 TextStyle usernameStyle = const TextStyle(
   color: Colors.white,
   fontSize: 15,
@@ -79,6 +81,7 @@ List<IconData> listOfIcons = [
   Icons.message_rounded,
   Icons.settings_rounded,
 ];
+List<IconButton> listOfAppbarIcons = [];
 List<String> listOfText = [
   "Home",
   "Friends",
