@@ -52,7 +52,7 @@ class _AddAccountState extends State<AddAccount> {
             ),
             IntlPhoneField(
               showDropdownIcon: true,
-              showCountryFlag: false,
+              showCountryFlag: true,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               dropdownTextStyle: const TextStyle(color: Colors.white),
               style: const TextStyle(color: Colors.white),

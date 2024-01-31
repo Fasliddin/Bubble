@@ -32,15 +32,17 @@ class _AccountPageState extends State<AccountPage> {
                 )),
           ),
         ],
-        leadingWidth: 40,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.chevron_left_rounded,
-              size: 35,
-            )),
+        leadingWidth: 25,
+        leading: Center(
+          child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(
+                Icons.chevron_left_rounded,
+                size: 35,
+              )),
+        ),
         automaticallyImplyLeading: false,
         iconTheme: const IconThemeData(color: bubbleColor),
         backgroundColor: background,
@@ -57,7 +59,7 @@ class _AccountPageState extends State<AccountPage> {
                   backgroundColor: bubbleColor,
                   child: CircleAvatar(
                     radius: 14,
-                    backgroundColor: bubbleColor,
+                    backgroundColor: bottomNavigationColor,
                     backgroundImage:
                         AssetImage(HomeAccountTempleteList[accountIndex].image),
                   ),

@@ -8,11 +8,15 @@ import 'package:flutter/material.dart';
 
 String? errorMessage;
 String? Username = "Username";
+String imageUser = "assets/avatars/first.png";
 String? Email = "Examle@gmail.com";
 int selectedIndex = 0;
+double toolbarHeight = 0.0;
 bool checkValueUp = false;
 bool checkValueIn = false;
 bool notifications = false;
+bool usernameSet = false;
+bool selectedAccount = false;
 int accountIndex = 1;
 int passwordIndex = 0;
 
@@ -54,6 +58,7 @@ TextEditingController signUpEmailController = TextEditingController();
 TextEditingController signUpPasswordController = TextEditingController();
 TextEditingController signInEmailController = TextEditingController();
 TextEditingController signInPasswordController = TextEditingController();
+TextEditingController usernameChangeController = TextEditingController();
 List password = [
   "1",
   "2",
@@ -65,6 +70,19 @@ List password = [
   "8",
   "9",
   "0",
+];
+List images = [
+  "assets/avatars/first.png",
+  "assets/avatars/second.png",
+  "assets/avatars/thirty.png",
+  "assets/avatars/fourthy.png",
+  "assets/avatars/fivethy.png",
+  "assets/avatars/sixty.png",
+  "assets/avatars/seventy.png",
+  "assets/avatars/eighty.png",
+  "assets/avatars/ninethy.png",
+  "assets/avatars/ten.png",
+  "assets/avatars/eleven.png",
 ];
 List datas = [
   "salom",
@@ -81,7 +99,6 @@ List<IconData> listOfIcons = [
   Icons.message_rounded,
   Icons.settings_rounded,
 ];
-List<IconButton> listOfAppbarIcons = [];
 List<String> listOfText = [
   "Home",
   "Friends",
@@ -99,73 +116,73 @@ List HomeAccountTempleteList = [
   HomeAccounts(
       username: "Fasliddin Farhodjonov",
       message: "Salom qayerdasan 😀😀😀",
-      image: "assets/images/user.png",
+      image: "assets/avatars/first.png",
       messageNumber: 5,
       clock: "15:00"),
   HomeAccounts(
       username: "Abdulloh Aliyev",
       message: "Bugun meet qilamizmi?",
-      image: "assets/images/user2.png",
+      image: "assets/avatars/second.png",
       messageNumber: 1,
       clock: "18:14"),
   HomeAccounts(
       username: "Esonov Sunnatillo",
       message: "qaleysiz!!!",
-      image: "assets/images/user.png",
+      image: "assets/avatars/thirty.png",
       messageNumber: 3,
       clock: "07:35"),
   HomeAccounts(
       username: "Alexandr",
       message: "Hello my friend",
-      image: "assets/images/user.png",
+      image: "assets/avatars/fourthy.png",
       messageNumber: 0,
       clock: "15:00"),
   HomeAccounts(
       username: "Elon Musk",
       message: "You are the best",
-      image: "assets/images/user2.png",
+      image: "assets/avatars/fivethy.png",
       messageNumber: 1,
       clock: "12:14"),
   HomeAccounts(
       username: "Esonov Sunnatillo",
       message: "qaleysiz!!!",
-      image: "assets/images/user.png",
+      image: "assets/avatars/seventy.png",
       messageNumber: 3,
       clock: "07:35"),
   HomeAccounts(
       username: "Fasliddin Farhodjonov",
-      message: "Salom qandaysan 😀😀😀",
-      image: "assets/images/user.png",
+      message: "Salom qandaysan 😀😀😀.Men yaxshiman",
+      image: "assets/avatars/eighty.png",
       messageNumber: 2,
       clock: "15:00"),
   HomeAccounts(
       username: "Abdulloh Aliyev",
       message: "Bugun meet qilamizmi?",
-      image: "assets/images/user.png",
+      image: "assets/avatars/ninethy.png",
       messageNumber: 1,
       clock: "18:14"),
   HomeAccounts(
       username: "Esonov Sunnatillo",
       message: "qaleysiz!!!",
-      image: "assets/images/user2.png",
+      image: "assets/avatars/ten.png",
       messageNumber: 3,
       clock: "07:35"),
   HomeAccounts(
       username: "Fasliddin Farhodjonov",
       message: "Salom qandaysan 😀😀😀",
-      image: "assets/images/user.png",
+      image: "assets/avatars/eleven.png",
       messageNumber: 2,
       clock: "15:00"),
   HomeAccounts(
       username: "Abdulloh Aliyev",
       message: "Bugun meet qilamizmi?",
-      image: "assets/images/user.png",
+      image: "assets/avatars/first.png",
       messageNumber: 1,
       clock: "18:14"),
   HomeAccounts(
       username: "Esonov Sunnatillo",
       message: "qaleysiz!!!",
-      image: "assets/images/user2.png",
+      image: "assets/avatars/seventy.png",
       messageNumber: 3,
       clock: "07:35"),
 ];

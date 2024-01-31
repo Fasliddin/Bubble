@@ -1,7 +1,7 @@
 import 'package:bubble/components/add_account.dart';
+import 'package:bubble/components/icons.dart';
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
-import 'package:bubble/screens/messages_screen.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -16,16 +16,6 @@ class _HomeState extends State<Home> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    listOfAppbarIcons.add(
-      IconButton(
-        onPressed: () {},
-        icon: Icon(
-          Icons.add_rounded,
-          color: Colors.white.withOpacity(0.80),
-          weight: 10,
-        ),
-      ),
-    );
   }
 
   @override
@@ -56,7 +46,51 @@ class _HomeState extends State<Home> {
           weight: 10,
         ),
       ),
-      appBar:appBar,
+      appBar: AppBar(
+        titleSpacing: 10,
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.add_rounded,
+                color: Colors.white,
+              )),
+        ],
+        toolbarHeight: 60,
+        backgroundColor: background,
+        title: SizedBox(
+          width: double.infinity / 2.5,
+          height: 38,
+          child: SearchBar(
+            // controller: searchController,
+            onSubmitted: (value) {},
+            textStyle: const MaterialStatePropertyAll(
+              TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            hintText: "Search",
+            leading: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
+              child: search(),
+            ),
+            shape: MaterialStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+            ),
+            side: MaterialStatePropertyAll(
+              BorderSide(
+                color: searchBarColor.withOpacity(0.80),
+              ),
+            ),
+            elevation: const MaterialStatePropertyAll(0),
+            backgroundColor: const MaterialStatePropertyAll(
+              searchBarColor,
+            ),
+          ),
+        ),
+      ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ClipRRect(

@@ -1,6 +1,6 @@
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
-// import 'package:bubble/data/variables.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Settings extends StatefulWidget {
@@ -18,17 +18,132 @@ class _SettingsState extends State<Settings> {
       backgroundColor: background,
       appBar: AppBar(
         backgroundColor: background,
-        toolbarHeight: 200,
+        centerTitle: true,
+        toolbarHeight: 160,
         title: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            CircleAvatar(
-              radius: 42,
-              backgroundColor: bubbleColor,
+            GestureDetector(
+              onTap: () {
+                setState(
+                  () {
+                    showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          50,
+                        ),
+                      ),
+                      builder: (context) => Container(
+                        width: size.width,
+                        decoration: const BoxDecoration(
+                          color: background,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                "Save changes",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              TextField(
+                                controller: usernameChangeController,
+                                decoration: const InputDecoration(
+                                  hintText: "Username",
+                                  hintStyle: TextStyle(
+                                    color: Colors.blueGrey,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                              SizedBox(
+                                width: double.infinity,
+                                height: 70,
+                                child: ListView.builder(
+                                  itemCount: images.length,
+                                  scrollDirection: Axis.horizontal,
+                                  itemBuilder: (context, index) =>
+                                      GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        imageUser = images[index];
+                                      });
+                                    },
+                                    child: CircleAvatar(
+                                      radius: 40,
+                                      backgroundImage: AssetImage(
+                                        images[index],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              ElevatedButton(
+                                style: ButtonStyle(
+                                  shape: MaterialStatePropertyAll(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  backgroundColor:
+                                      const MaterialStatePropertyAll(
+                                    bubbleColor,
+                                  ),
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    if (usernameChangeController
+                                        .text.isNotEmpty) {
+                                      Username = usernameChangeController.text;
+                                      usernameChangeController.clear();
+                                    }
+                                    Navigator.pop(context);
+                                  });
+                                },
+                                child: SizedBox(
+                                  width: size.width,
+                                  height: 50,
+                                  child: const Center(
+                                    child: Text(
+                                      "Save changes",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
               child: CircleAvatar(
-                backgroundColor: background,
-                radius: 40,
-                backgroundImage: AssetImage(
-                  "assets/images/user2.png",
+                radius: 42,
+                backgroundColor: bubbleColor,
+                child: CircleAvatar(
+                  backgroundColor: background,
+                  radius: 40,
+                  backgroundImage: AssetImage(
+                    imageUser,
+                  ),
                 ),
               ),
             ),
@@ -48,50 +163,6 @@ class _SettingsState extends State<Settings> {
                 Email.toString(),
                 textAlign: TextAlign.center,
                 style: settingsEmailStyle,
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: size.width / 5,
-                vertical: 5,
-              ),
-              child: ElevatedButton.icon(
-                style: ButtonStyle(
-                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                      side: BorderSide(
-                        color: bottomNavigationColor.withOpacity(
-                          0.30,
-                        ),
-                      ),
-                      borderRadius: BorderRadius.circular(
-                        10,
-                      ))),
-                  backgroundColor: MaterialStatePropertyAll(
-                    bubbleColor,
-                  ),
-                ),
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => AlertDialog(
-                      backgroundColor: bubbleColor,
-                      title: Text("Edit profile"),
-                      icon: Icon(Icons.drive_file_rename_outline_rounded),
-                      titlePadding: EdgeInsets.all(5),
-                    ),
-                  );
-                },
-                icon: Icon(
-                  Icons.drive_file_rename_outline_rounded,
-                  color: bottomNavigationColor,
-                ),
-                label: Text(
-                  "Edit profile",
-                  style: TextStyle(
-                    color: bottomNavigationColor,
-                    fontSize: 15,
-                  ),
-                ),
               ),
             ),
           ],
@@ -129,7 +200,7 @@ class _SettingsState extends State<Settings> {
               style: settingsListStyle,
             ),
             trailing: SizedBox(
-              width: 45,
+              width: 42,
               height: 30,
               child: FittedBox(
                 fit: BoxFit.fill,

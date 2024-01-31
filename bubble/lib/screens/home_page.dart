@@ -14,106 +14,188 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: background,
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: HomeAccountTempleteList.length,
-          itemBuilder: (context, index) => Builder(builder: (context) {
-            return GestureDetector(
-              onLongPress: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => SimpleDialog(
-                    title: const Text("Clear accounts"),
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            HomeAccountTempleteList.removeAt(index);
-                            Navigator.pop(context);
-                          });
-                        },
-                        child: const Text("Clear"),
-                      ),
-                    ],
-                  ),
-                );
-              },
-              child: ListTile(
-                selected: true,
-                onTap: () {
-                  accountIndex = index;
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedAccount = false;
+        });
+      },
+      child: Scaffold(
+        backgroundColor: background,
+        extendBody: true,
+        appBar: AppBar(
+          actions: [
+            Visibility(
+              visible: selectedAccount,
+              child: IconButton(
+                onPressed: () {
                   setState(() {
-                    HomeAccountTempleteList[index].messageNumber = 0;
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              backgroundColor: background,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              title: Text(
+                                  "Foydalanuvchini haqiqatdan ham o'chirmoqchimisiz?"),
+                              titleTextStyle: TextStyle(
+                                fontSize: 18,
+                              ),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedAccount = false;
+                                      HomeAccountTempleteList.removeAt(
+                                          accountIndex);
+                                      toolbarHeight = 0.0;
+                                      Navigator.pop(context);
+                                    });
+                                  },
+                                  child: Text(
+                                    "Ha",
+                                    style: TextStyle(color: bubbleColor),
+                                  ),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedAccount = false;
+                                      toolbarHeight = 0.0;
+                                    });
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text(
+                                    "Yo'q",
+                                    style: TextStyle(color: bubbleColor),
+                                  ),
+                                ),
+                              ],
+                            ));
                   });
-                  Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                      builder: (context) => const AccountPage(),
-                    ),
-                  );
                 },
-                title: Text(
-                  HomeAccountTempleteList[index].username,
-                  style: usernameStyle,
+                icon: Icon(
+                  Icons.delete_rounded,
+                  color: bubbleColor,
                 ),
-                subtitle: Text(
-                 HomeAccountTempleteList[index].message,
-                  style: messageStyle,
-                  softWrap: false,
+              ),
+            ),
+            Visibility(
+              visible: selectedAccount,
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    selectedAccount = false;
+                    toolbarHeight = 0.0;
+                  });
+                },
+                icon: Icon(
+                  Icons.arrow_drop_down_rounded,
+                  color: bubbleColor,
                 ),
-                leading: CircleAvatar(
-                  backgroundColor: bubbleColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(2.0),
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: bubbleColor,
-                      backgroundImage:
-                          AssetImage(HomeAccountTempleteList[index].image),
-                    ),
+              ),
+            ),
+          ],
+          toolbarHeight: toolbarHeight,
+          backgroundColor: Colors.transparent,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView.builder(
+            itemCount: HomeAccountTempleteList.length,
+            itemBuilder: (context, index) => Builder(builder: (context) {
+              return GestureDetector(
+                onLongPress: () {
+                  setState(() {
+                    if (selectedAccount == false) {
+                      setState(() {
+                        toolbarHeight = 40.0;
+                        accountIndex = index;
+                        selectedAccount = !selectedAccount;
+                      });
+                    } else {
+                      toolbarHeight = 0.0;
+                      selectedAccount = !selectedAccount;
+                    }
+                  });
+                },
+                child: ListTile(
+                  selected: true,
+                  tileColor: bubbleColor,
+                  onTap: () {
+                    accountIndex = index;
+                    setState(() {
+                      HomeAccountTempleteList[index].messageNumber = 0;
+                    });
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => const AccountPage(),
+                      ),
+                    );
+                  },
+                  title: Text(
+                    HomeAccountTempleteList[index].username,
+                    style: usernameStyle,
                   ),
-                ),
-                isThreeLine: false,
-                trailing: Column(
-                  children: [
-                    Padding(
+                  subtitle: Text(
+                    HomeAccountTempleteList[index].message,
+                    style: messageStyle,
+                    softWrap: false,
+                  ),
+                  leading: CircleAvatar(
+                    backgroundColor: bubbleColor,
+                    child: Padding(
                       padding: const EdgeInsets.all(2.0),
-                      child: Text(
-                        HomeAccountTempleteList[index].clock.toString(),
-                        style: clockStyle,
-                        textAlign: TextAlign.center,
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundColor: bottomNavigationColor,
+                        backgroundImage:
+                            AssetImage(HomeAccountTempleteList[index].image),
                       ),
                     ),
-                    Visibility(
-                      visible: HomeAccountTempleteList[index].messageNumber > 0
-                          ? true
-                          : false,
-                      child: CircleAvatar(
-                        radius: 9,
-                        backgroundColor: Colors.white,
+                  ),
+                  isThreeLine: false,
+                  trailing: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Text(
+                          HomeAccountTempleteList[index].clock.toString(),
+                          style: clockStyle,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      Visibility(
+                        visible:
+                            HomeAccountTempleteList[index].messageNumber > 0
+                                ? true
+                                : false,
                         child: CircleAvatar(
-                          radius: 8,
-                          backgroundColor: bubbleColor,
-                          child: Center(
-                            child: Text(
-                              HomeAccountTempleteList[index]
-                                  .messageNumber
-                                  .toString(),
-                              style: messageNumberStyle,
-                              textAlign: TextAlign.center,
+                          radius: 9,
+                          backgroundColor: Colors.white,
+                          child: CircleAvatar(
+                            radius: 8,
+                            backgroundColor: bubbleColor,
+                            child: Center(
+                              child: Text(
+                                HomeAccountTempleteList[index]
+                                    .messageNumber
+                                    .toString(),
+                                style: messageNumberStyle,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            }),
+          ),
         ),
       ),
     );
