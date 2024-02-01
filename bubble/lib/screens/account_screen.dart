@@ -4,6 +4,8 @@ import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key});
@@ -84,56 +86,141 @@ class _AccountPageState extends State<AccountPage> {
               padding: const EdgeInsets.all(4.0),
               child: GestureDetector(
                 onLongPress: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => SimpleDialog(
-                    backgroundColor: background,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
+                  showDialog(
+                    context: context,
+                    builder: (context) => SimpleDialog(
+                      backgroundColor: background,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      children: [
+                        ListTile(
+                          title: Text(
+                            "Tahrirlash",
+                            style: settingsListStyle,
+                          ),
+                          leading: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                account_screenindex = index;
+                                sendController.text = datas[index];
+                                Navigator.pop(context);
+                              });
+                            },
+                            icon: Icon(
+                              Icons.edit_rounded,
+                              color: bubbleColor,
+                            ),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            "Nusxalash",
+                            style: settingsListStyle,
+                          ),
+                          leading: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                Clipboard.setData(
+                                  ClipboardData(
+                                    text: datas[index],
+                                  ),
+                                );
+                                Navigator.pop(context);
+                              });
+                            },
+                            icon: Icon(
+                              Icons.copy_rounded,
+                              color: bubbleColor,
+                            ),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            "O'chirish",
+                            style: settingsListStyle,
+                          ),
+                          leading: IconButton(
+                            onPressed: () {
+                              setState(() {
+                                datas.removeAt(index);
+                                Navigator.pop(context);
+                              });
+                            },
+                            icon: Icon(
+                              Icons.delete_rounded,
+                              color: bubbleColor,
+                            ),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            "Javob berish",
+                            style: settingsListStyle,
+                          ),
+                          leading: Builder(
+                            builder: (context) {
+                              return IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    ScaffoldMessenger.of(context)
+                                        .showMaterialBanner(
+                                      MaterialBanner(
+                                        dividerColor: Colors.transparent,
+                                        backgroundColor: background,
+                                        padding: EdgeInsets.all(10),
+                                        content: Text(
+                                          datas[index],
+                                        ),
+                                        contentTextStyle: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 15,
+                                        ),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () {
+                                              // ScaffoldMessenger.of(context)
+                                              //     .clearMaterialBanners();
+                                            },
+                                            child: Text("Bekor qilish"),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.forward_rounded,
+                                  color: bubbleColor,
+                                ),
+                              );
+                            }
+                          ),
+                        ),
+                      ],
                     ),
-                    children: [
-                      ListTile(
-                        title: Text("Tahrirlash"),
-                        leading: Icon(Icons.edit_rounded),
-                      ),
-                      ListTile(
-                        title: Text("Tahrirlash"),
-                        leading: Icon(Icons.edit_rounded),
-                      ),
-                      ListTile(
-                        title: Text("Tahrirlash"),
-                        leading: Icon(Icons.edit_rounded),
-                      ),
-                      ListTile(
-                        title: Text("Tahrirlash"),
-                        leading: Icon(Icons.edit_rounded),
-                      ),
-                    ],
-                  ),
-                );
-              },
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      bottomRight: index % 2 == 0?Radius.circular(25):Radius.circular(5),
-                      bottomLeft: index % 2 == 0?Radius.circular(5):Radius.circular(25),
-                      topLeft:index % 2 == 0?Radius.circular(0):Radius.circular(5),
-                      topRight: index % 2 == 0?Radius.circular(5):Radius.circular(0),
+                  );
+                },
+                child: ChatBubble(
+                  margin: EdgeInsets.only(top: 5),
+                  clipper: ChatBubbleClipper4(
+                      type: index % 2 == 0
+                          ? BubbleType.sendBubble
+                          : BubbleType.receiverBubble),
+                  elevation: 1,
+                  shadowColor: bottomNavigationColor.withOpacity(0.50),
+                  alignment:
+                      index % 2 == 0 ? Alignment.topLeft : Alignment.topRight,
+                  backGroundColor:
+                      index % 2 == 0 ? bubbleColor : bottomNavigationColor,
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxWidth: MediaQuery.of(context).size.width * 0.7,
                     ),
-                  ),
-                  elevation: 0,
-                  color: index % 2 == 0
-                      ? bubbleColor
-                      : bottomNavigationColor,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      child: Text(
-                        datas[index],
-                        textAlign:
-                            index % 2 == 0 ? TextAlign.left : TextAlign.right,
-                        style: usernameStyle,
-                      ),
+                    child: SelectableText(
+                      datas[index],
+                      textAlign: TextAlign.start,
+                      style: accountMessageStyle,
                     ),
                   ),
                 ),
@@ -149,7 +236,7 @@ class _AccountPageState extends State<AccountPage> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SearchBar(
-            controller: searchController,
+            controller: sendController,
             onSubmitted: (value) {
               setState(() {
                 adding();
@@ -157,7 +244,14 @@ class _AccountPageState extends State<AccountPage> {
             },
             trailing: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    if (sendController.text.isNotEmpty) {
+                      datas[account_screenindex] = sendController.text;
+                    }
+                    sendController.clear();
+                  });
+                },
                 icon: const Icon(
                   Icons.mic_none_rounded,
                   color: bubbleColor,

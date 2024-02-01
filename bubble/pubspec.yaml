@@ -41,6 +41,7 @@ dependencies:
   bottom_navbar_with_indicator: ^0.0.8
   persistent_bottom_nav_bar: ^5.0.2
   intl_phone_field: ^3.2.0
+  flutter_chat_bubble: ^2.0.2
 
 
 dev_dependencies:

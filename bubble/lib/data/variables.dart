@@ -19,6 +19,7 @@ bool usernameSet = false;
 bool selectedAccount = false;
 int accountIndex = 1;
 int passwordIndex = 0;
+int account_screenindex = 0;
 
 TextStyle usernameStyle = const TextStyle(
   color: Colors.white,
@@ -37,6 +38,11 @@ TextStyle messageStyle = const TextStyle(
   color: bubbleColor,
   fontSize: 12,
 );
+TextStyle accountMessageStyle = const TextStyle(
+  color: Colors.white,
+  fontSize: 14,
+  fontWeight: FontWeight.w400,
+);
 TextStyle settingsListStyle = const TextStyle(
   color: Colors.white,
   fontSize: 15,
@@ -49,7 +55,7 @@ TextStyle settingsEmailStyle = const TextStyle(
   color: Colors.white,
   fontSize: 12,
 );
-SearchController searchController = SearchController();
+TextEditingController sendController = TextEditingController();
 TextEditingController firstNameController = TextEditingController();
 TextEditingController lastNameController = TextEditingController();
 TextEditingController numberController = TextEditingController();

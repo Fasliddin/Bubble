@@ -6,19 +6,19 @@ void selectBottom(value) {
 }
 
 void datasadd() {
-  if (searchController.text.isNotEmpty) {
-    datas.add(searchController.text);
+  if (sendController.text.isNotEmpty) {
+    datas.add(sendController.text);
   } else {
     print("xato");
   }
-  searchController.clear();
+  sendController.clear();
 }
 
 void adding() {
-  if (searchController.text.isNotEmpty) {
-    datas.add(searchController.text);
+  if (sendController.text.isNotEmpty) {
+    datas.add(sendController.text);
   } else {
     print("xato");
   }
-  // searchController.clear();
+  // sendController.clear();
 }
