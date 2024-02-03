@@ -17,6 +17,7 @@ bool checkValueIn = false;
 bool notifications = false;
 bool usernameSet = false;
 bool selectedAccount = false;
+bool edit = false;
 int accountIndex = 1;
 int passwordIndex = 0;
 int account_screenindex = 0;

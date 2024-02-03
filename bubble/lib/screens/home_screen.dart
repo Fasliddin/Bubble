@@ -50,7 +50,17 @@ class _HomeState extends State<Home> {
         titleSpacing: 10,
         actions: [
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                setState(() {
+                  showModalBottomSheet(
+                      context: context,
+                      useRootNavigator: true,
+                      constraints: const BoxConstraints.expand(),
+                      showDragHandle: false,
+                      backgroundColor: background,
+                      builder: (context) => const AddAccount());
+                });
+              },
               icon: Icon(
                 Icons.add_rounded,
                 color: Colors.white,

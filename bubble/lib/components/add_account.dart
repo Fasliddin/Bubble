@@ -41,13 +41,95 @@ class _AddAccountState extends State<AddAccount> {
             TextField(
               controller: firstNameController,
               decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.blueGrey,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.blueGrey,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                  borderSide: BorderSide(
+                    color: bubbleColor,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                ),
+                hintText: "First name",
+                hintStyle: TextStyle(
+                  color: Colors.blueGrey,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
             TextField(
               controller: lastNameController,
               decoration: const InputDecoration(
-                border: OutlineInputBorder(),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.blueGrey,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.blueGrey,
+                  ),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                  borderSide: BorderSide(
+                    color: bubbleColor,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(
+                      5,
+                    ),
+                  ),
+                ),
+                hintText: "Last name",
+                hintStyle: TextStyle(
+                  color: Colors.blueGrey,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
             IntlPhoneField(
@@ -61,7 +143,7 @@ class _AddAccountState extends State<AddAccount> {
               controller: numberController,
               pickerDialogStyle: PickerDialogStyle(
                 width: size.width,
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(8),
                 backgroundColor: background,
                 countryCodeStyle: const TextStyle(
                   color: bubbleColor,
@@ -72,7 +154,25 @@ class _AddAccountState extends State<AddAccount> {
                 listTilePadding: const EdgeInsets.all(1),
                 listTileDivider: Container(),
                 searchFieldInputDecoration: InputDecoration(
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.blueGrey,
+                    ),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: bubbleColor,
+                    ),
+                  ),
                   hintText: "Search",
+                  hintStyle: const TextStyle(
+                    color: bubbleColor,
+                  ),
                   prefixIcon: IconButton(
                     onPressed: () {},
                     icon: const Icon(
@@ -98,8 +198,20 @@ class _AddAccountState extends State<AddAccount> {
                 labelStyle: TextStyle(
                     color: bubbleColor.withOpacity(0.50), fontSize: 14),
                 prefixStyle: const TextStyle(color: bubbleColor, fontSize: 12),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.blueGrey,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: bubbleColor,
+                  ),
+                ),
                 border: const OutlineInputBorder(
-                  borderSide: BorderSide(),
+                  borderSide: BorderSide(
+                    color: Colors.blueGrey,
+                  ),
                 ),
               ),
               initialCountryCode: 'UZ',
@@ -126,7 +238,7 @@ class _AddAccountState extends State<AddAccount> {
               child: SizedBox(
                 width: size.width,
                 height: 50,
-                child:const Center(
+                child: const Center(
                   child: Text(
                     "Create contact",
                     style: TextStyle(

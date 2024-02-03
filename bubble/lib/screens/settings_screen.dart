@@ -35,99 +35,146 @@ class _SettingsState extends State<Settings> {
                           50,
                         ),
                       ),
-                      builder: (context) => Container(
-                        width: size.width,
-                        decoration: const BoxDecoration(
-                          color: background,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20),
-                          ),
-                        ),
+                      builder: (context) => SafeArea(
                         child: Padding(
-                          padding: const EdgeInsets.all(15.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              const Text(
-                                "Save changes",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
+                          padding:  EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
+                          child: Container(
+                            width: size.width,
+                            decoration: const BoxDecoration(
+                              color: background,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20),
                               ),
-                              TextField(
-                                controller: usernameChangeController,
-                                decoration: const InputDecoration(
-                                  hintText: "Username",
-                                  hintStyle: TextStyle(
-                                    color: Colors.blueGrey,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                              SizedBox(
-                                width: double.infinity,
-                                height: 70,
-                                child: ListView.builder(
-                                  itemCount: images.length,
-                                  scrollDirection: Axis.horizontal,
-                                  itemBuilder: (context, index) =>
-                                      GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        imageUser = images[index];
-                                      });
-                                    },
-                                    child: CircleAvatar(
-                                      radius: 40,
-                                      backgroundImage: AssetImage(
-                                        images[index],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              ElevatedButton(
-                                style: ButtonStyle(
-                                  shape: MaterialStatePropertyAll(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  backgroundColor:
-                                      const MaterialStatePropertyAll(
-                                    bubbleColor,
-                                  ),
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    if (usernameChangeController
-                                        .text.isNotEmpty) {
-                                      Username = usernameChangeController.text;
-                                      usernameChangeController.clear();
-                                    }
-                                    Navigator.pop(context);
-                                  });
-                                },
-                                child: SizedBox(
-                                  width: size.width,
-                                  height: 50,
-                                  child: const Center(
-                                    child: Text(
-                                      "Save changes",
-                                      style: TextStyle(
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(15.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Text(
+                                    "Change user information",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 18,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  TextField(
+                                    controller: usernameChangeController,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                    decoration: const InputDecoration(
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.blueGrey,
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                            10,
+                                          ),
+                                        ),
+                                      ),
+                                      disabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Colors.blueGrey,
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                            10,
+                                          ),
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                            10,
+                                          ),
+                                        ),
+                                        borderSide: BorderSide(
+                                          color: bubbleColor,
+                                        ),
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                            10,
+                                          ),
+                                        ),
+                                      ),
+                                      hintText: "Username",
+                                      hintStyle: TextStyle(
+                                        color: Colors.blueGrey,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ),
-                                ),
+                                  SizedBox(
+                                    width: double.infinity,
+                                    height: 70,
+                                    child: ListView.builder(
+                                      itemCount: images.length,
+                                      scrollDirection: Axis.horizontal,
+                                      itemBuilder: (context, index) =>
+                                          GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            imageUser = images[index];
+                                          });
+                                        },
+                                        child: CircleAvatar(
+                                          radius: 40,
+                                          backgroundImage: AssetImage(
+                                            images[index],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    style: ButtonStyle(
+                                      shape: MaterialStatePropertyAll(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                      backgroundColor:
+                                          const MaterialStatePropertyAll(
+                                        bubbleColor,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        if (usernameChangeController
+                                            .text.isNotEmpty) {
+                                          Username =
+                                              usernameChangeController.text;
+                                          usernameChangeController.clear();
+                                        }
+                                        Navigator.pop(context);
+                                      });
+                                    },
+                                    child: SizedBox(
+                                      width: size.width,
+                                      height: 50,
+                                      child: const Center(
+                                        child: Text(
+                                          "Save changes",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
@@ -168,166 +215,57 @@ class _SettingsState extends State<Settings> {
           ],
         ),
       ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Container(
-              width: size.width,
-              height: 30,
-              color: bottomNavigationColor,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Text(
-                  "Notifications",
-                  style: TextStyle(
-                    color: bubbleColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            ListTile(
+              leading: Icon(
+                Icons.message_rounded,
+                size: 25,
+                color: bubbleColor,
+              ),
+              title: Text(
+                "Chat sozlamalari",
+                style: settingsListStyle,
               ),
             ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.notifications_rounded,
-              size: 25,
-              color: bubbleColor,
-            ),
-            title: Text(
-              "Allow Notifications",
-              style: settingsListStyle,
-            ),
-            trailing: SizedBox(
-              width: 42,
-              height: 30,
-              child: FittedBox(
-                fit: BoxFit.fill,
-                child: Switch(
-                  activeColor: bubbleColor,
-                  trackOutlineColor: MaterialStatePropertyAll(
-                    Colors.transparent,
-                  ),
-                  activeTrackColor: bottomNavigationColor,
-                  inactiveThumbColor: bubbleColor,
-                  inactiveTrackColor: bottomNavigationColor,
-                  trackOutlineWidth: MaterialStatePropertyAll(2),
-                  onChanged: (value) {
-                    setState(() {
-                      notifications = value;
-                    });
-                  },
-                  value: notifications,
-                ),
+            ListTile(
+              leading: Icon(
+                Icons.lock_rounded,
+                size: 25,
+                color: bubbleColor,
+              ),
+              title: Text(
+                "Xavfsizlik",
+                style: settingsListStyle,
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Container(
-              width: size.width,
-              height: 30,
-              color: bottomNavigationColor,
-              child: Padding(
-                padding: const EdgeInsets.all(5.0),
-                child: Text(
-                  "Preferenses",
-                  style: TextStyle(
-                    color: bubbleColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
+            ListTile(
+              leading: Icon(
+                Icons.download_rounded,
+                size: 25,
+                color: bubbleColor,
+              ),
+              title: Text(
+                "Downloads",
+                style: settingsListStyle,
               ),
             ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.message_rounded,
-              size: 25,
-              color: bubbleColor,
+            ListTile(
+              leading: Icon(
+                Icons.logout_rounded,
+                size: 25,
+                color: bubbleColor,
+              ),
+              title: Text(
+                "Logout",
+                style: settingsListStyle,
+              ),
             ),
-            title: Text(
-              "Chat sozlamalari",
-              style: settingsListStyle,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              color: bubbleColor,
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.lock_rounded,
-              size: 25,
-              color: bubbleColor,
-            ),
-            title: Text(
-              "Xavfsizlik",
-              style: settingsListStyle,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              color: bubbleColor,
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.group_rounded,
-              size: 25,
-              color: bubbleColor,
-            ),
-            title: Text(
-              "Friends",
-              style: settingsListStyle,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              color: bubbleColor,
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.download_rounded,
-              size: 25,
-              color: bubbleColor,
-            ),
-            title: Text(
-              "Downloads",
-              style: settingsListStyle,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              color: bubbleColor,
-            ),
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.language_rounded,
-              size: 25,
-              color: bubbleColor,
-            ),
-            title: Text(
-              "Language",
-              style: settingsListStyle,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Divider(
-              color: bubbleColor,
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
