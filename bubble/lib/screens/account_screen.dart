@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:bubble/components/home_screen_acccounts.dart';
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
@@ -62,6 +63,19 @@ class _AccountPageState extends State<AccountPage> {
                       ),
                       PopupMenuItem(
                         child: ListTile(
+                          onTap: () {
+                            setState(() {
+                              FriendsAccountTempleteList.add(
+                               HomeAccounts(
+      username:  HomeAccountTempleteList[accountIndex].username,
+      message:  HomeAccountTempleteList[accountIndex].message,
+      image:HomeAccountTempleteList[accountIndex].image,
+      messageNumber:  HomeAccountTempleteList[accountIndex].messageNumber,
+      clock: "07:35"),
+                              );
+                            });
+                            Navigator.pop(context);
+                          },
                           leading: Icon(
                             Icons.star_border_rounded,
                             color: bubbleColor,
@@ -249,6 +263,7 @@ class _AccountPageState extends State<AccountPage> {
             child: Padding(
               padding: const EdgeInsets.all(12.0),
               child: SearchBar(
+                textStyle: MaterialStatePropertyAll(sendMessageStyle),
                 controller: sendController,
                 elevation: MaterialStatePropertyAll(2),
                 onSubmitted: (value) {

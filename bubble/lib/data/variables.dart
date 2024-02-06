@@ -19,9 +19,14 @@ bool usernameSet = false;
 bool selectedAccount = false;
 bool edit = false;
 int accountIndex = 1;
+var sliderValue = 14.0;
 int passwordIndex = 0;
 int account_screenindex = 0;
 
+TextStyle sendMessageStyle = const TextStyle(
+  color: Colors.white,
+  fontSize: 15,
+);
 TextStyle usernameStyle = const TextStyle(
   color: Colors.white,
   fontSize: 15,
@@ -39,9 +44,9 @@ TextStyle messageStyle = const TextStyle(
   color: bubbleColor,
   fontSize: 12,
 );
-TextStyle accountMessageStyle = const TextStyle(
+TextStyle accountMessageStyle = TextStyle(
   color: Colors.white,
-  fontSize: 14,
+  fontSize: sliderValue,
   fontWeight: FontWeight.w400,
 );
 TextStyle settingsListStyle = const TextStyle(
@@ -190,6 +195,26 @@ List HomeAccountTempleteList = [
       username: "Esonov Sunnatillo",
       message: "qaleysiz!!!",
       image: "assets/avatars/seventy.png",
+      messageNumber: 3,
+      clock: "07:35"),
+];
+List FriendsAccountTempleteList = [
+  HomeAccounts(
+      username: "Fasliddin Farhodjonov",
+      message: "Salom qayerdasan 😀😀😀",
+      image: "assets/avatars/first.png",
+      messageNumber: 5,
+      clock: "15:00"),
+  HomeAccounts(
+      username: "Abdulloh Aliyev",
+      message: "Bugun meet qilamizmi?",
+      image: "assets/avatars/second.png",
+      messageNumber: 1,
+      clock: "18:14"),
+  HomeAccounts(
+      username: "Esonov Sunnatillo",
+      message: "qaleysiz!!!",
+      image: "assets/avatars/thirty.png",
       messageNumber: 3,
       clock: "07:35"),
 ];

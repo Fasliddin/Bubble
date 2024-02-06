@@ -1,5 +1,7 @@
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
+import 'package:bubble/screens/chat_settings_page.dart';
+import 'package:bubble/screens/safety_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,8 +39,8 @@ class _SettingsState extends State<Settings> {
                       ),
                       builder: (context) => SafeArea(
                         child: Padding(
-                          padding:  EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom),
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
                           child: Container(
                             width: size.width,
                             decoration: const BoxDecoration(
@@ -52,7 +54,8 @@ class _SettingsState extends State<Settings> {
                               padding: const EdgeInsets.all(15.0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   const Text(
                                     "Change user information",
@@ -138,7 +141,8 @@ class _SettingsState extends State<Settings> {
                                     style: ButtonStyle(
                                       shape: MaterialStatePropertyAll(
                                         RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(10),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
                                         ),
                                       ),
                                       backgroundColor:
@@ -221,6 +225,16 @@ class _SettingsState extends State<Settings> {
           shrinkWrap: true,
           children: [
             ListTile(
+              onTap: () {
+                setState(() {
+                  Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => ChatSettings(),
+                    ),
+                  );
+                });
+              },
               leading: Icon(
                 Icons.message_rounded,
                 size: 25,
@@ -232,6 +246,16 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             ListTile(
+              onTap: () {
+                setState(() {
+                    Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => SafetyPage(),
+                    ),
+                  );
+                });
+              },
               leading: Icon(
                 Icons.lock_rounded,
                 size: 25,
@@ -249,7 +273,7 @@ class _SettingsState extends State<Settings> {
                 color: bubbleColor,
               ),
               title: Text(
-                "Downloads",
+                "Yuklanmalar",
                 style: settingsListStyle,
               ),
             ),
@@ -260,7 +284,7 @@ class _SettingsState extends State<Settings> {
                 color: bubbleColor,
               ),
               title: Text(
-                "Logout",
+                "Chiqish",
                 style: settingsListStyle,
               ),
             ),

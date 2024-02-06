@@ -46,7 +46,7 @@ class _FriendsPageState extends State<FriendsPage> {
                                   onPressed: () {
                                     setState(() {
                                       selectedAccount = false;
-                                      HomeAccountTempleteList.removeAt(
+                                      FriendsAccountTempleteList.removeAt(
                                           accountIndex);
                                       Navigator.pop(context);
                                     });
@@ -111,7 +111,7 @@ class _FriendsPageState extends State<FriendsPage> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView.builder(
-            itemCount: HomeAccountTempleteList.length,
+            itemCount: FriendsAccountTempleteList.length,
             itemBuilder: (context, index) => Builder(builder: (context) {
               return GestureDetector(
                 onLongPress: () {
@@ -129,7 +129,7 @@ class _FriendsPageState extends State<FriendsPage> {
                       selectedAccount = false;
                     });
                     setState(() {
-                      HomeAccountTempleteList[index].messageNumber = 0;
+                     FriendsAccountTempleteList[index].messageNumber = 0;
                     });
                     Navigator.push(
                       context,
@@ -139,11 +139,11 @@ class _FriendsPageState extends State<FriendsPage> {
                     );
                   },
                   title: Text(
-                    HomeAccountTempleteList[index].username,
+                   FriendsAccountTempleteList[index].username,
                     style: usernameStyle,
                   ),
                   subtitle: Text(
-                    HomeAccountTempleteList[index].message,
+                   FriendsAccountTempleteList[index].message,
                     style: messageStyle,
                     softWrap: false,
                   ),
@@ -165,14 +165,14 @@ class _FriendsPageState extends State<FriendsPage> {
                       Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: Text(
-                          HomeAccountTempleteList[index].clock.toString(),
+                         FriendsAccountTempleteList[index].clock.toString(),
                           style: clockStyle,
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Visibility(
                         visible:
-                            HomeAccountTempleteList[index].messageNumber > 0
+                           FriendsAccountTempleteList[index].messageNumber > 0
                                 ? true
                                 : false,
                         child: CircleAvatar(
@@ -183,7 +183,7 @@ class _FriendsPageState extends State<FriendsPage> {
                             backgroundColor: bubbleColor,
                             child: Center(
                               child: Text(
-                                HomeAccountTempleteList[index]
+                               FriendsAccountTempleteList[index]
                                     .messageNumber
                                     .toString(),
                                 style: messageNumberStyle,
