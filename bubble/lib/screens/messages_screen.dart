@@ -24,6 +24,7 @@ class _MessagesPageState extends State<MessagesPage> {
         backgroundColor: background,
         extendBody: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           actions: [
             Visibility(
               visible: selectedAccount,

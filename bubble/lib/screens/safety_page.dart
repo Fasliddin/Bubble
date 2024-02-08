@@ -1,4 +1,7 @@
 import 'package:bubble/data/colors.dart';
+import 'package:bubble/data/variables.dart';
+import 'package:bubble/screens/access_code_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -75,7 +78,15 @@ class _SafetyPageState extends State<SafetyPage> {
                   ),
                 ),
                 onPressed: () {
-                  setState(() {});
+                  setState(() {
+                    onOrOff=true;
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        CupertinoPageRoute(
+                          builder: (context) => acessCodePage(),
+                        ),
+                        (route) => false);
+                  });
                 },
                 child: SizedBox(
                   width: size.width,

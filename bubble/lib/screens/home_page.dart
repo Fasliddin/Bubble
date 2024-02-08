@@ -1,3 +1,4 @@
+import 'package:bubble/components/add_account.dart';
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:bubble/screens/account_screen.dart';
@@ -23,7 +24,32 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         backgroundColor: background,
         extendBody: true,
+        floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            showModalBottomSheet(
+                context: context,
+                useRootNavigator: true,
+                constraints: const BoxConstraints.expand(),
+                showDragHandle: false,
+                backgroundColor: background,
+                builder: (context) => const AddAccount());
+          });
+        },
+        backgroundColor: bubbleColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            50,
+          ),
+        ),
+        child: const Icon(
+          Icons.add_rounded,
+          color: Colors.white,
+          weight: 10,
+        ),
+      ),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           actions: [
             Visibility(
               visible: selectedAccount,
@@ -36,9 +62,9 @@ class _HomePageState extends State<HomePage> {
                               backgroundColor: background,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              title: Text(
+                              title:const Text(
                                   "Foydalanuvchini haqiqatdan ham o'chirmoqchimisiz?"),
-                              titleTextStyle: TextStyle(
+                              titleTextStyle:const TextStyle(
                                 fontSize: 18,
                               ),
                               actions: [
@@ -52,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                                       Navigator.pop(context);
                                     });
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Ha",
                                     style: TextStyle(color: bubbleColor),
                                   ),
@@ -66,7 +92,7 @@ class _HomePageState extends State<HomePage> {
 
                                     Navigator.pop(context);
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "Yo'q",
                                     style: TextStyle(color: bubbleColor),
                                   ),
@@ -75,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                             ));
                   });
                 },
-                icon: Icon(
+                icon:const Icon(
                   Icons.delete_rounded,
                   color: bubbleColor,
                 ),
@@ -90,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                     toolbarHeight = 0.0;
                   });
                 },
-                icon: Icon(
+                icon:const Icon(
                   Icons.arrow_drop_down_rounded,
                   color: bubbleColor,
                 ),

@@ -24,6 +24,7 @@ class _FriendsPageState extends State<FriendsPage> {
         backgroundColor: background,
         extendBody: true,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           actions: [
             Visibility(
               visible: selectedAccount,
@@ -36,9 +37,9 @@ class _FriendsPageState extends State<FriendsPage> {
                               backgroundColor: background,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              title: Text(
+                              title:const Text(
                                   "Foydalanuvchini haqiqatdan ham o'chirmoqchimisiz?"),
-                              titleTextStyle: TextStyle(
+                              titleTextStyle:const TextStyle(
                                 fontSize: 18,
                               ),
                               actions: [
@@ -51,7 +52,7 @@ class _FriendsPageState extends State<FriendsPage> {
                                       Navigator.pop(context);
                                     });
                                   },
-                                  child: Text(
+                                  child:const Text(
                                     "Ha",
                                     style: TextStyle(color: bubbleColor),
                                   ),
@@ -63,7 +64,7 @@ class _FriendsPageState extends State<FriendsPage> {
                                     });
                                     Navigator.pop(context);
                                   },
-                                  child: Text(
+                                  child:const Text(
                                     "Yo'q",
                                     style: TextStyle(color: bubbleColor),
                                   ),
@@ -72,7 +73,7 @@ class _FriendsPageState extends State<FriendsPage> {
                             ));
                   });
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.delete_rounded,
                   color: bubbleColor,
                 ),
@@ -86,7 +87,7 @@ class _FriendsPageState extends State<FriendsPage> {
                     selectedAccount = false;
                   });
                 },
-                icon: Icon(
+                icon:const Icon(
                   Icons.arrow_drop_down_rounded,
                   color: bubbleColor,
                 ),

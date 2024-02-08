@@ -19,9 +19,10 @@ bool usernameSet = false;
 bool selectedAccount = false;
 bool edit = false;
 int accountIndex = 1;
-var sliderValue = 14.0;
+double sliderValue = 14.0;
 int passwordIndex = 0;
 int account_screenindex = 0;
+bool onOrOff = false;
 
 TextStyle sendMessageStyle = const TextStyle(
   color: Colors.white,
@@ -71,18 +72,7 @@ TextEditingController signUpPasswordController = TextEditingController();
 TextEditingController signInEmailController = TextEditingController();
 TextEditingController signInPasswordController = TextEditingController();
 TextEditingController usernameChangeController = TextEditingController();
-List password = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "0",
-];
+//rasmlar listi
 List images = [
   "assets/avatars/first.png",
   "assets/avatars/second.png",
@@ -163,7 +153,7 @@ List HomeAccountTempleteList = [
       clock: "07:35"),
   HomeAccounts(
       username: "Fasliddin Farhodjonov",
-      message: "Salom qandaysan 😀😀😀.Men yaxshiman",
+      message: "Salom qandaysan 😀😀😀",
       image: "assets/avatars/eighty.png",
       messageNumber: 2,
       clock: "15:00"),

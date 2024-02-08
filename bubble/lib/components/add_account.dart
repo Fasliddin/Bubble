@@ -154,17 +154,17 @@ class _AddAccountState extends State<AddAccount> {
                 listTilePadding: const EdgeInsets.all(1),
                 listTileDivider: Container(),
                 searchFieldInputDecoration: InputDecoration(
-                  border: UnderlineInputBorder(
+                  border: const UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.blueGrey,
                     ),
                   ),
-                  enabledBorder: UnderlineInputBorder(
+                  enabledBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.blueGrey,
                     ),
                   ),
-                  focusedBorder: UnderlineInputBorder(
+                  focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(
                       color: bubbleColor,
                     ),
@@ -198,12 +198,12 @@ class _AddAccountState extends State<AddAccount> {
                 labelStyle: TextStyle(
                     color: bubbleColor.withOpacity(0.50), fontSize: 14),
                 prefixStyle: const TextStyle(color: bubbleColor, fontSize: 12),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder:const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.blueGrey,
                   ),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder:const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: bubbleColor,
                   ),

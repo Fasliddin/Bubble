@@ -1,6 +1,8 @@
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
+import 'package:bubble/screens/access_code_page.dart';
 import 'package:bubble/screens/chat_settings_page.dart';
+import 'package:bubble/screens/home_screen.dart';
 import 'package:bubble/screens/safety_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ class _SettingsState extends State<Settings> {
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: background,
         centerTitle: true,
         toolbarHeight: 160,
@@ -248,12 +251,21 @@ class _SettingsState extends State<Settings> {
             ListTile(
               onTap: () {
                 setState(() {
+                  if (onOrOff == false) {
                     Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => SafetyPage(),
+                      ),
+                    );
+                  }else{
+                      Navigator.push(
                     context,
                     CupertinoPageRoute(
-                      builder: (context) => SafetyPage(),
+                      builder: (context) => acessCodePage(),
                     ),
                   );
+                  }
                 });
               },
               leading: Icon(
@@ -267,6 +279,12 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             ListTile(
+              onTap: () {
+                setState(() {
+                  sliderValue = 30;
+                  Home().createState();
+                });
+              },
               leading: Icon(
                 Icons.download_rounded,
                 size: 25,

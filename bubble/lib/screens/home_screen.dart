@@ -22,46 +22,24 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: background,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            showModalBottomSheet(
-                context: context,
-                useRootNavigator: true,
-                constraints: const BoxConstraints.expand(),
-                showDragHandle: false,
-                backgroundColor: background,
-                builder: (context) => const AddAccount());
-          });
-        },
-        backgroundColor: bubbleColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            50,
-          ),
-        ),
-        child: const Icon(
-          Icons.add_rounded,
-          color: Colors.white,
-          weight: 10,
-        ),
-      ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         titleSpacing: 10,
         actions: [
           IconButton(
               onPressed: () {
                 setState(() {
                   showModalBottomSheet(
-                      context: context,
-                      useRootNavigator: true,
-                      constraints: const BoxConstraints.expand(),
-                      showDragHandle: false,
-                      backgroundColor: background,
-                      builder: (context) => const AddAccount());
+                    context: context,
+                    useRootNavigator: true,
+                    constraints: const BoxConstraints.expand(),
+                    showDragHandle: false,
+                    backgroundColor: background,
+                    builder: (context) => const AddAccount(),
+                  );
                 });
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.add_rounded,
                 color: Colors.white,
               )),

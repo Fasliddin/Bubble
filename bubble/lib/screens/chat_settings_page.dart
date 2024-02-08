@@ -1,5 +1,6 @@
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
+import 'package:bubble/screens/account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 
@@ -17,7 +18,7 @@ class _ChatSettingsState extends State<ChatSettings> {
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
-        iconTheme: IconThemeData(
+        iconTheme:const IconThemeData(
           size: 35,
           color: bubbleColor,
         ),
@@ -26,7 +27,7 @@ class _ChatSettingsState extends State<ChatSettings> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.chevron_left_rounded),
+          icon:const Icon(Icons.chevron_left_rounded),
         ),
         backgroundColor: background,
       ),
@@ -41,7 +42,7 @@ class _ChatSettingsState extends State<ChatSettings> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Text(
+                  const Text(
                     "      Xabarlar matni o'lchami",
                     style: TextStyle(
                       color: Colors.white,
@@ -60,14 +61,7 @@ class _ChatSettingsState extends State<ChatSettings> {
                           activeColor: bottomNavigationColor,
                           inactiveColor: bubbleColor.withOpacity(0.50),
                           value: sliderValue,
-                          onChanged: (value) {
-                            setState(() {
-                              print(
-                                sliderValue.toInt(),
-                              );
-                              sliderValue = value;
-                            });
-                          },
+                          onChanged: (value) => slider(value),
                         ),
                       ),
                       Text(
@@ -80,7 +74,8 @@ class _ChatSettingsState extends State<ChatSettings> {
               ),
             ),
           ),
-          Container(color: bottomNavigationColor,
+          Container(
+            color: bottomNavigationColor,
             width: size.width,
             height: size.height / 6,
             child: Padding(
@@ -88,7 +83,7 @@ class _ChatSettingsState extends State<ChatSettings> {
               child: Column(
                 children: [
                   ChatBubble(
-                    margin: EdgeInsets.only(top: 5),
+                    margin:const EdgeInsets.only(top: 5),
                     backGroundColor: background,
                     elevation: 0,
                     clipper: ChatBubbleClipper4(
@@ -107,7 +102,7 @@ class _ChatSettingsState extends State<ChatSettings> {
                   ),
                   ChatBubble(
                     alignment: Alignment.centerRight,
-                    margin: EdgeInsets.only(top: 5),
+                    margin: const EdgeInsets.only(top: 5),
                     backGroundColor: bubbleColor,
                     elevation: 0,
                     clipper: ChatBubbleClipper4(
@@ -131,5 +126,12 @@ class _ChatSettingsState extends State<ChatSettings> {
         ],
       ),
     );
+  }
+
+  void slider(double value) {
+    return setState(() {
+      sliderValue = value;
+     const AccountPage().createState();
+    });
   }
 }
