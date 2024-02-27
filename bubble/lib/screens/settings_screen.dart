@@ -262,7 +262,7 @@ class _SettingsState extends State<Settings> {
                       Navigator.push(
                     context,
                     CupertinoPageRoute(
-                      builder: (context) => acessCodePage(),
+                      builder: (context) => AcessCodePage(),
                     ),
                   );
                   }

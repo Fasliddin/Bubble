@@ -1,6 +1,5 @@
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
-import 'package:bubble/screens/account_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 
@@ -18,7 +17,7 @@ class _ChatSettingsState extends State<ChatSettings> {
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
-        iconTheme:const IconThemeData(
+        iconTheme: const IconThemeData(
           size: 35,
           color: bubbleColor,
         ),
@@ -26,8 +25,11 @@ class _ChatSettingsState extends State<ChatSettings> {
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
+            setState(() {
+              sliderValue = valueclone;
+            });
           },
-          icon:const Icon(Icons.chevron_left_rounded),
+          icon: const Icon(Icons.chevron_left_rounded),
         ),
         backgroundColor: background,
       ),
@@ -60,8 +62,11 @@ class _ChatSettingsState extends State<ChatSettings> {
                           thumbColor: bubbleColor,
                           activeColor: bottomNavigationColor,
                           inactiveColor: bubbleColor.withOpacity(0.50),
-                          value: sliderValue,
-                          onChanged: (value) => slider(value),
+                          value: sliderValue.toDouble(),
+                          onChanged: (value) => setState(() {
+                            valueclone = value;
+                            sliderValue=valueclone;
+                          }),
                         ),
                       ),
                       Text(
@@ -83,7 +88,7 @@ class _ChatSettingsState extends State<ChatSettings> {
               child: Column(
                 children: [
                   ChatBubble(
-                    margin:const EdgeInsets.only(top: 5),
+                    margin: const EdgeInsets.only(top: 5),
                     backGroundColor: background,
                     elevation: 0,
                     clipper: ChatBubbleClipper4(
@@ -131,7 +136,6 @@ class _ChatSettingsState extends State<ChatSettings> {
   void slider(double value) {
     return setState(() {
       sliderValue = value;
-     const AccountPage().createState();
     });
   }
 }

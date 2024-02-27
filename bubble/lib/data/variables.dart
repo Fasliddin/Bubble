@@ -19,7 +19,8 @@ bool usernameSet = false;
 bool selectedAccount = false;
 bool edit = false;
 int accountIndex = 1;
-double sliderValue = 14.0;
+dynamic valueclone = 12.0;
+dynamic sliderValue = 14.0;
 int passwordIndex = 0;
 int account_screenindex = 0;
 bool onOrOff = false;
@@ -62,6 +63,7 @@ TextStyle settingsEmailStyle = const TextStyle(
   color: Colors.white,
   fontSize: 12,
 );
+SearchController searchController = SearchController();
 TextEditingController sendController = TextEditingController();
 TextEditingController firstNameController = TextEditingController();
 TextEditingController lastNameController = TextEditingController();
@@ -72,6 +74,7 @@ TextEditingController signUpPasswordController = TextEditingController();
 TextEditingController signInEmailController = TextEditingController();
 TextEditingController signInPasswordController = TextEditingController();
 TextEditingController usernameChangeController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 //rasmlar listi
 List images = [
   "assets/avatars/first.png",
@@ -93,6 +96,20 @@ List datas = [
   "nima qilyapsan",
   "sen bilan bubble ilovasida yozishyapman",
   "Ha bubble ilovasi eng zo'r chat ilovasi😁shunday emasmi",
+];
+List<dynamic> password = [];
+List safety = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "×",
 ];
 
 List<IconData> listOfIcons = [

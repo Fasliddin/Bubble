@@ -154,6 +154,8 @@ class _HomePageState extends State<HomePage> {
                     setState(() {
                       HomeAccountTempleteList[index].messageNumber = 0;
                     });
+                    sliderValue=valueclone;
+                    print(sliderValue);
                     Navigator.push(
                       context,
                       CupertinoPageRoute(

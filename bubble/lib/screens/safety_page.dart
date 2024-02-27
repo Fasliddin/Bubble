@@ -83,7 +83,7 @@ class _SafetyPageState extends State<SafetyPage> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         CupertinoPageRoute(
-                          builder: (context) => acessCodePage(),
+                          builder: (context) => AcessCodePage(),
                         ),
                         (route) => false);
                   });

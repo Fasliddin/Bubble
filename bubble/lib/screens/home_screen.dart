@@ -1,8 +1,9 @@
 import 'package:bubble/components/add_account.dart';
-import 'package:bubble/components/icons.dart';
 import 'package:bubble/data/colors.dart';
+import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -50,7 +51,7 @@ class _HomeState extends State<Home> {
           width: double.infinity / 2.5,
           height: 38,
           child: SearchBar(
-            // controller: searchController,
+            controller: searchController,
             onSubmitted: (value) {},
             textStyle: const MaterialStatePropertyAll(
               TextStyle(
@@ -60,7 +61,16 @@ class _HomeState extends State<Home> {
             hintText: "Search",
             leading: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
-              child: search(),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    search(context);
+                  });
+                },
+                child: SvgPicture.asset(
+                  "assets/icons/search.svg",
+                ),
+              ),
             ),
             shape: MaterialStatePropertyAll(
               RoundedRectangleBorder(
@@ -112,22 +122,22 @@ class _HomeState extends State<Home> {
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home_rounded),
-                label: "Home",
+                label: "Asosiy",
                 backgroundColor: bottomNavigationColor,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.group_rounded),
-                label: "Friends",
+                label: "Sevimlilar",
                 backgroundColor: bottomNavigationColor,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.message_rounded),
-                label: "Messages",
+                label: "Xabarlar",
                 backgroundColor: bottomNavigationColor,
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings_rounded),
-                label: "Settings",
+                label: "Sozlamalar",
                 backgroundColor: bottomNavigationColor,
               ),
             ],
