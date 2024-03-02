@@ -44,11 +44,16 @@ class _ChatSettingsState extends State<ChatSettings> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text(
-                    "      Xabarlar matni o'lchami",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 15,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 25,
+                    ),
+                    child: const Text(
+                      "Xabarlar matni o'lchami",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                   Row(
@@ -63,10 +68,11 @@ class _ChatSettingsState extends State<ChatSettings> {
                           activeColor: bottomNavigationColor,
                           inactiveColor: bubbleColor.withOpacity(0.50),
                           value: sliderValue.toDouble(),
-                          onChanged: (value) => setState(() {
-                            valueclone = value;
-                            sliderValue=valueclone;
-                          }),
+                          onChanged: (value) {
+                            sliderFunc(value);
+                            setState(() {});
+                            print(sliderValue.toInt());
+                          },
                         ),
                       ),
                       Text(
@@ -133,9 +139,10 @@ class _ChatSettingsState extends State<ChatSettings> {
     );
   }
 
-  void slider(double value) {
+  void sliderFunc(double value) {
     return setState(() {
-      sliderValue = value;
+      valueclone = value;
+      sliderValue = valueclone;
     });
   }
 }

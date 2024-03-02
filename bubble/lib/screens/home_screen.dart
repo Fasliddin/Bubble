@@ -58,7 +58,7 @@ class _HomeState extends State<Home> {
                 color: Colors.white,
               ),
             ),
-            hintText: "Search",
+            hintText: "Qidirish...",
             leading: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 2),
               child: GestureDetector(
@@ -102,11 +102,14 @@ class _HomeState extends State<Home> {
               color: bubbleColor,
             ),
             selectedLabelStyle: const TextStyle(
-              color: Color.fromRGBO(82, 186, 140, 1),
-              fontWeight: FontWeight.w500,
-            ),
+                color: Color.fromRGBO(82, 186, 140, 1),
+                fontWeight: FontWeight.w500,
+                fontSize: 14),
             unselectedLabelStyle: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w400),
+              color: Colors.white,
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
+            ),
             unselectedIconTheme: const IconThemeData(
               color: Colors.white,
             ),

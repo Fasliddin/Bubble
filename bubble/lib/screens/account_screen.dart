@@ -55,7 +55,7 @@ class _AccountPageState extends State<AccountPage> {
                               color: bubbleColor,
                             ),
                             title: Text(
-                              "Delete chat",
+                              "Chatni o'chirish",
                               style: usernameStyle,
                             ),
                           ),
@@ -73,7 +73,7 @@ class _AccountPageState extends State<AccountPage> {
                               color: bubbleColor,
                             ),
                             title: Text(
-                              "Clear history",
+                              "Xotirani tozalash",
                               style: usernameStyle,
                             ),
                           ),
@@ -106,7 +106,7 @@ class _AccountPageState extends State<AccountPage> {
                               color: bubbleColor,
                             ),
                             title: Text(
-                              "Add to favorites",
+                              "Sevimlilarga qo'shish",
                               style: usernameStyle,
                             ),
                           ),

@@ -25,29 +25,29 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: background,
         extendBody: true,
         floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            showModalBottomSheet(
-                context: context,
-                useRootNavigator: true,
-                constraints: const BoxConstraints.expand(),
-                showDragHandle: false,
-                backgroundColor: background,
-                builder: (context) => const AddAccount());
-          });
-        },
-        backgroundColor: bubbleColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            50,
+          onPressed: () {
+            setState(() {
+              showModalBottomSheet(
+                  context: context,
+                  useRootNavigator: true,
+                  constraints: const BoxConstraints.expand(),
+                  showDragHandle: false,
+                  backgroundColor: background,
+                  builder: (context) => const AddAccount());
+            });
+          },
+          backgroundColor: bubbleColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              50,
+            ),
+          ),
+          child: const Icon(
+            Icons.add_rounded,
+            color: Colors.white,
+            weight: 10,
           ),
         ),
-        child: const Icon(
-          Icons.add_rounded,
-          color: Colors.white,
-          weight: 10,
-        ),
-      ),
         appBar: AppBar(
           automaticallyImplyLeading: false,
           actions: [
@@ -62,12 +62,26 @@ class _HomePageState extends State<HomePage> {
                               backgroundColor: background,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              title:const Text(
+                              title: const Text(
                                   "Foydalanuvchini haqiqatdan ham o'chirmoqchimisiz?"),
-                              titleTextStyle:const TextStyle(
+                              titleTextStyle: const TextStyle(
                                 fontSize: 18,
                               ),
                               actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedAccount = false;
+                                      toolbarHeight = 0.0;
+                                    });
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    "Yo'q",
+                                    style: TextStyle(color: bubbleColor),
+                                  ),
+                                ),
                                 TextButton(
                                   onPressed: () {
                                     setState(() {
@@ -83,25 +97,11 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(color: bubbleColor),
                                   ),
                                 ),
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      selectedAccount = false;
-                                      toolbarHeight = 0.0;
-                                    });
-
-                                    Navigator.pop(context);
-                                  },
-                                  child: const Text(
-                                    "Yo'q",
-                                    style: TextStyle(color: bubbleColor),
-                                  ),
-                                ),
                               ],
                             ));
                   });
                 },
-                icon:const Icon(
+                icon: const Icon(
                   Icons.delete_rounded,
                   color: bubbleColor,
                 ),
@@ -116,7 +116,7 @@ class _HomePageState extends State<HomePage> {
                     toolbarHeight = 0.0;
                   });
                 },
-                icon:const Icon(
+                icon: const Icon(
                   Icons.arrow_drop_down_rounded,
                   color: bubbleColor,
                 ),
@@ -154,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                     setState(() {
                       HomeAccountTempleteList[index].messageNumber = 0;
                     });
-                    sliderValue=valueclone;
+                    sliderValue = valueclone;
                     print(sliderValue);
                     Navigator.push(
                       context,

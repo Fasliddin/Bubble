@@ -37,12 +37,24 @@ class _FriendsPageState extends State<FriendsPage> {
                               backgroundColor: background,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10)),
-                              title:const Text(
+                              title: const Text(
                                   "Foydalanuvchini haqiqatdan ham o'chirmoqchimisiz?"),
-                              titleTextStyle:const TextStyle(
+                              titleTextStyle: const TextStyle(
                                 fontSize: 18,
                               ),
                               actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      selectedAccount = false;
+                                    });
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text(
+                                    "Yo'q",
+                                    style: TextStyle(color: bubbleColor),
+                                  ),
+                                ),
                                 TextButton(
                                   onPressed: () {
                                     setState(() {
@@ -52,20 +64,8 @@ class _FriendsPageState extends State<FriendsPage> {
                                       Navigator.pop(context);
                                     });
                                   },
-                                  child:const Text(
+                                  child: const Text(
                                     "Ha",
-                                    style: TextStyle(color: bubbleColor),
-                                  ),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      selectedAccount = false;
-                                    });
-                                    Navigator.pop(context);
-                                  },
-                                  child:const Text(
-                                    "Yo'q",
                                     style: TextStyle(color: bubbleColor),
                                   ),
                                 ),
@@ -87,7 +87,7 @@ class _FriendsPageState extends State<FriendsPage> {
                     selectedAccount = false;
                   });
                 },
-                icon:const Icon(
+                icon: const Icon(
                   Icons.arrow_drop_down_rounded,
                   color: bubbleColor,
                 ),
@@ -99,7 +99,7 @@ class _FriendsPageState extends State<FriendsPage> {
           title: const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Friends",
+              "Sevimlilar",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class _FriendsPageState extends State<FriendsPage> {
                       selectedAccount = false;
                     });
                     setState(() {
-                     FriendsAccountTempleteList[index].messageNumber = 0;
+                      FriendsAccountTempleteList[index].messageNumber = 0;
                     });
                     Navigator.push(
                       context,
@@ -140,11 +140,11 @@ class _FriendsPageState extends State<FriendsPage> {
                     );
                   },
                   title: Text(
-                   FriendsAccountTempleteList[index].username,
+                    FriendsAccountTempleteList[index].username,
                     style: usernameStyle,
                   ),
                   subtitle: Text(
-                   FriendsAccountTempleteList[index].message,
+                    FriendsAccountTempleteList[index].message,
                     style: messageStyle,
                     softWrap: false,
                   ),
@@ -166,14 +166,14 @@ class _FriendsPageState extends State<FriendsPage> {
                       Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: Text(
-                         FriendsAccountTempleteList[index].clock.toString(),
+                          FriendsAccountTempleteList[index].clock.toString(),
                           style: clockStyle,
                           textAlign: TextAlign.center,
                         ),
                       ),
                       Visibility(
                         visible:
-                           FriendsAccountTempleteList[index].messageNumber > 0
+                            FriendsAccountTempleteList[index].messageNumber > 0
                                 ? true
                                 : false,
                         child: CircleAvatar(
@@ -184,7 +184,7 @@ class _FriendsPageState extends State<FriendsPage> {
                             backgroundColor: bubbleColor,
                             child: Center(
                               child: Text(
-                               FriendsAccountTempleteList[index]
+                                FriendsAccountTempleteList[index]
                                     .messageNumber
                                     .toString(),
                                 style: messageNumberStyle,

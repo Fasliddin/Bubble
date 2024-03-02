@@ -79,13 +79,13 @@ class _SafetyPageState extends State<SafetyPage> {
                 ),
                 onPressed: () {
                   setState(() {
-                    onOrOff=true;
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        CupertinoPageRoute(
-                          builder: (context) => AcessCodePage(),
-                        ),
-                        (route) => false);
+                    onOrOff = true;
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => AcessCodePage(),
+                      ),
+                    );
                   });
                 },
                 child: SizedBox(

@@ -5,10 +5,13 @@ import 'package:bubble/screens/home_page.dart';
 import 'package:bubble/screens/messages_screen.dart';
 import 'package:bubble/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 String? errorMessage;
 String? Username = "Username";
 String imageUser = "assets/avatars/first.png";
+String imageApplication = "assets/images/dark-background-abstract-background-network-3d-background-2880x1800-8324.png";
+String version = "1.0.0";
 String? Email = "Examle@gmail.com";
 int selectedIndex = 0;
 double toolbarHeight = 0.0;
@@ -18,8 +21,9 @@ bool notifications = false;
 bool usernameSet = false;
 bool selectedAccount = false;
 bool edit = false;
+bool checkPassword = false;
 int accountIndex = 1;
-dynamic valueclone = 12.0;
+dynamic valueclone = 14.0;
 dynamic sliderValue = 14.0;
 int passwordIndex = 0;
 int account_screenindex = 0;
@@ -75,6 +79,7 @@ TextEditingController signInEmailController = TextEditingController();
 TextEditingController signInPasswordController = TextEditingController();
 TextEditingController usernameChangeController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
+TextEditingController passwordRemoveController = TextEditingController();
 //rasmlar listi
 List images = [
   "assets/avatars/first.png",
@@ -97,8 +102,21 @@ List datas = [
   "sen bilan bubble ilovasida yozishyapman",
   "Ha bubble ilovasi eng zo'r chat ilovasi😁shunday emasmi",
 ];
-List<dynamic> password = [];
+dynamic safetyPassword; 
 List safety = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "×",
+];
+List safetyRemover = [
   "0",
   "1",
   "2",

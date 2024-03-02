@@ -47,13 +47,11 @@ class _MessagesPageState extends State<MessagesPage> {
                                   onPressed: () {
                                     setState(() {
                                       selectedAccount = false;
-                                      HomeAccountTempleteList.removeAt(
-                                          accountIndex);
-                                      Navigator.pop(context);
                                     });
+                                    Navigator.pop(context);
                                   },
                                   child: Text(
-                                    "Ha",
+                                    "Yo'q",
                                     style: TextStyle(color: bubbleColor),
                                   ),
                                 ),
@@ -61,11 +59,13 @@ class _MessagesPageState extends State<MessagesPage> {
                                   onPressed: () {
                                     setState(() {
                                       selectedAccount = false;
+                                      HomeAccountTempleteList.removeAt(
+                                          accountIndex);
+                                      Navigator.pop(context);
                                     });
-                                    Navigator.pop(context);
                                   },
                                   child: Text(
-                                    "Yo'q",
+                                    "Ha",
                                     style: TextStyle(color: bubbleColor),
                                   ),
                                 ),
@@ -99,7 +99,7 @@ class _MessagesPageState extends State<MessagesPage> {
           title: const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Messages",
+              "Xabarlar",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

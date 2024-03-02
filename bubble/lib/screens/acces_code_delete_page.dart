@@ -4,16 +4,14 @@ import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
 import 'package:bubble/screens/home_screen.dart';
 
-class AcessCodePage extends StatefulWidget {
-  const AcessCodePage({Key? key}) : super(key: key);
+class AcessCodePageRemover extends StatefulWidget {
+  const AcessCodePageRemover({Key? key}) : super(key: key);
 
   @override
-  State<AcessCodePage> createState() => _AcessCodePageState();
+  State<AcessCodePageRemover> createState() => _AcessCodePageRemoverState();
 }
 
-class _AcessCodePageState extends State<AcessCodePage> {
-  final TextEditingController passwordController = TextEditingController();
-
+class _AcessCodePageRemoverState extends State<AcessCodePageRemover> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -49,7 +47,7 @@ class _AcessCodePageState extends State<AcessCodePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Kirish kodini yaratish",
+                  "Kirish kodini o'chirish",
                   style: TextStyle(
                     color: bubbleColor,
                     fontSize: 22,
@@ -57,7 +55,7 @@ class _AcessCodePageState extends State<AcessCodePage> {
                   ),
                 ),
                 Text(
-                  "Kirish kodini yaratish uchun istalgan 4 xonali raqamni kiriting.",
+                  "Kirish kodini o'chirish uchun avval o'rnatilgan kirish kodini kiriting.",
                   style: TextStyle(
                     color: bubbleColor,
                     fontSize: 16,
@@ -86,7 +84,7 @@ class _AcessCodePageState extends State<AcessCodePage> {
                   ),
                 ),
                 textAlign: TextAlign.center,
-                controller: passwordController,
+                controller: passwordRemoveController,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 46,
@@ -106,7 +104,7 @@ class _AcessCodePageState extends State<AcessCodePage> {
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: GridView.builder(
-                    itemCount: safety.length,
+                    itemCount: safetyRemover.length,
                     addAutomaticKeepAlives: true,
                     addSemanticIndexes: true,
                     primary: true,
@@ -126,14 +124,17 @@ class _AcessCodePageState extends State<AcessCodePage> {
                           setState(() {
                             print(index);
                             if (index == 10 &&
-                                passwordController.text.isNotEmpty) {
-                              passwordController.text = passwordController.text
-                                  .substring(
-                                      0, passwordController.text.length - 1);
-                            } else if (passwordController.text.length < 4) {
-                              passwordController.text += safety[index];
+                                passwordRemoveController.text.isNotEmpty) {
+                              passwordRemoveController.text =
+                                  passwordRemoveController.text.substring(0,
+                                      passwordRemoveController.text.length - 1);
+                            } else if (passwordRemoveController.text.length <
+                                4) {
+                              passwordRemoveController.text +=
+                                  safetyRemover[index];
                             }
-                            if (passwordController.text.length == 4) {
+                            if (passwordRemoveController.text.length == 4 &&
+                                passwordRemoveController.text==safetyPassword) {
                               showAlertDialog(context);
                             }
                           });
@@ -151,7 +152,7 @@ class _AcessCodePageState extends State<AcessCodePage> {
                           ),
                           child: Center(
                             child: Text(
-                              safety[index].toString(),
+                              safetyRemover[index].toString(),
                               style: TextStyle(
                                 color: bubbleColor,
                                 fontSize: 20,
@@ -182,7 +183,7 @@ class _AcessCodePageState extends State<AcessCodePage> {
             borderRadius: BorderRadius.circular(5),
           ),
           title: Text(
-            "Kirish kodi o'rnatilsinmi?",
+            "Kirish kodi o'chirilsinmi?",
             style: TextStyle(
                 fontSize: 18, color: bubbleColor, fontWeight: FontWeight.w600),
           ),
@@ -196,7 +197,7 @@ class _AcessCodePageState extends State<AcessCodePage> {
                     fontWeight: FontWeight.w500),
               ),
               Text(
-                "${passwordController.text}",
+                "${passwordRemoveController.text}",
                 style: TextStyle(
                     fontSize: 16,
                     color: Colors.white,
@@ -219,9 +220,10 @@ class _AcessCodePageState extends State<AcessCodePage> {
             ),
             TextButton(
               onPressed: () {
-                checkPassword = true;
-                safetyPassword=passwordController.text;
-                passwordController.text="";
+                checkPassword = false;
+                safetyPassword=null;
+                onOrOff=false;
+                passwordRemoveController.text="";
                 Navigator.pushAndRemoveUntil(
                     context,
                     CupertinoPageRoute(

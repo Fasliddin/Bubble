@@ -1,9 +1,13 @@
+import 'dart:ui';
+
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/variables.dart';
+import 'package:bubble/screens/about_page.dart';
+import 'package:bubble/screens/acces_code_delete_page.dart';
 import 'package:bubble/screens/access_code_page.dart';
 import 'package:bubble/screens/chat_settings_page.dart';
-import 'package:bubble/screens/home_screen.dart';
 import 'package:bubble/screens/safety_page.dart';
+import 'package:bubble/screens/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +19,12 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -32,6 +42,11 @@ class _SettingsState extends State<Settings> {
               onTap: () {
                 setState(
                   () {
+                    if (Username == "Username") {
+                      print(Username);
+                    } else {
+                      usernameChangeController.text = Username.toString();
+                    }
                     showModalBottomSheet(
                       backgroundColor: Colors.transparent,
                       context: context,
@@ -61,11 +76,11 @@ class _SettingsState extends State<Settings> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   const Text(
-                                    "Change user information",
+                                    "Foydalanuvchi malumotlarini o'zgartirish",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 20,
+                                        fontSize: 18,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   TextField(
@@ -111,7 +126,7 @@ class _SettingsState extends State<Settings> {
                                           ),
                                         ),
                                       ),
-                                      hintText: "Username",
+                                      hintText: "Ismni o'zgartirish",
                                       hintStyle: TextStyle(
                                         color: Colors.blueGrey,
                                         fontWeight: FontWeight.w500,
@@ -169,7 +184,7 @@ class _SettingsState extends State<Settings> {
                                       height: 50,
                                       child: const Center(
                                         child: Text(
-                                          "Save changes",
+                                          "O'zgarishlarni saqlash",
                                           style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 18,
@@ -258,13 +273,20 @@ class _SettingsState extends State<Settings> {
                         builder: (context) => SafetyPage(),
                       ),
                     );
-                  }else{
-                      Navigator.push(
-                    context,
-                    CupertinoPageRoute(
-                      builder: (context) => AcessCodePage(),
-                    ),
-                  );
+                  } else if (onOrOff == true && checkPassword == false) {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => AcessCodePage(),
+                      ),
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => AcessCodePageRemover(),
+                      ),
+                    );
                   }
                 });
               },
@@ -281,8 +303,8 @@ class _SettingsState extends State<Settings> {
             ListTile(
               onTap: () {
                 setState(() {
-                  sliderValue = 30;
-                  Home().createState();
+                  sliderValue = 16.0;
+                  print(sliderValue);
                 });
               },
               leading: Icon(
@@ -296,6 +318,35 @@ class _SettingsState extends State<Settings> {
               ),
             ),
             ListTile(
+              onTap: () {
+                setState(() {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AboutPage(),
+                  );
+                });
+              },
+              leading: Icon(
+                Icons.info_outline_rounded,
+                size: 25,
+                color: bubbleColor,
+              ),
+              title: Text(
+                "Ilova haqida",
+                style: settingsListStyle,
+              ),
+            ),
+            ListTile(
+              onTap: () {
+                setState(() {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Splash(),
+                      ),
+                      (route) => false);
+                });
+              },
               leading: Icon(
                 Icons.logout_rounded,
                 size: 25,

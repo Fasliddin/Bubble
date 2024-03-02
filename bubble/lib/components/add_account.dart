@@ -1,3 +1,4 @@
+import 'package:bubble/components/home_screen_acccounts.dart';
 import 'package:bubble/data/colors.dart';
 import 'package:bubble/data/functions.dart';
 import 'package:bubble/data/variables.dart';
@@ -28,11 +29,11 @@ class _AddAccountState extends State<AddAccount> {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             const Text(
-              "New contact",
+              "Yangi kontakt qo'shish",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -78,7 +79,7 @@ class _AddAccountState extends State<AddAccount> {
                     ),
                   ),
                 ),
-                hintText: "First name",
+                hintText: "Ism",
                 hintStyle: TextStyle(
                   color: Colors.blueGrey,
                   fontWeight: FontWeight.w500,
@@ -125,7 +126,7 @@ class _AddAccountState extends State<AddAccount> {
                     ),
                   ),
                 ),
-                hintText: "Last name",
+                hintText: "Familiya",
                 hintStyle: TextStyle(
                   color: Colors.blueGrey,
                   fontWeight: FontWeight.w500,
@@ -190,7 +191,7 @@ class _AddAccountState extends State<AddAccount> {
                 Icons.keyboard_arrow_down_rounded,
               ),
               decoration: InputDecoration(
-                labelText: 'Phone number',
+                labelText: 'Telefon raqami',
                 floatingLabelStyle:
                     const TextStyle(color: bubbleColor, fontSize: 14),
                 floatingLabelAlignment: FloatingLabelAlignment.start,
@@ -198,12 +199,12 @@ class _AddAccountState extends State<AddAccount> {
                 labelStyle: TextStyle(
                     color: bubbleColor.withOpacity(0.50), fontSize: 14),
                 prefixStyle: const TextStyle(color: bubbleColor, fontSize: 12),
-                enabledBorder:const OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: Colors.blueGrey,
                   ),
                 ),
-                focusedBorder:const OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                     color: bubbleColor,
                   ),
@@ -233,6 +234,20 @@ class _AddAccountState extends State<AddAccount> {
               onPressed: () {
                 setState(() {
                   datasadd();
+                  HomeAccountTempleteList.addAll([
+                    HomeAccounts(
+                      clock: DateTime.now().toString().substring(0, 10),
+                      image: "assets/avatars/first.png",
+                      message: "Salomlar",
+                      messageNumber: 20,
+                      username: firstNameController.text +
+                          " " +
+                          lastNameController.text,
+                    ),
+                  ]);
+                  setState(() {
+                    Navigator.pop(context);
+                  });
                 });
               },
               child: SizedBox(
@@ -240,7 +255,7 @@ class _AddAccountState extends State<AddAccount> {
                 height: 50,
                 child: const Center(
                   child: Text(
-                    "Create contact",
+                    "Kontaktni yaratish",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18,
