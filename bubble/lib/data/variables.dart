@@ -10,7 +10,8 @@ import 'package:flutter/services.dart';
 String? errorMessage;
 String? Username = "Username";
 String imageUser = "assets/avatars/first.png";
-String imageApplication = "assets/images/dark-background-abstract-background-network-3d-background-2880x1800-8324.png";
+String imageApplication =
+    "assets/images/logo.png";
 String version = "1.0.0";
 String? Email = "Examle@gmail.com";
 int selectedIndex = 0;
@@ -102,7 +103,7 @@ List datas = [
   "sen bilan bubble ilovasida yozishyapman",
   "Ha bubble ilovasi eng zo'r chat ilovasi😁shunday emasmi",
 ];
-dynamic safetyPassword; 
+dynamic safetyPassword;
 List safety = [
   "0",
   "1",
